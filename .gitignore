@@ -1,2 +1,10 @@
-*.class
-*.log
+target
+data
+output
+project/target
+cmt.txt
+.idea
+tmp
+metastore_db
+derby.log
+.DS_Store
