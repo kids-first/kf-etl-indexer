@@ -11,8 +11,9 @@ val elasticsearch_spark_version = "7.10.1"
 val scalatest_version = "3.2.0"
 
 /* Runtime */
-libraryDependencies +=  "org.apache.spark" %% "spark-sql" % spark_version % Provided
+libraryDependencies += "org.apache.spark" %% "spark-sql" % spark_version % Provided
 libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-20" % elasticsearch_spark_version % Provided
+libraryDependencies += "org.scalaj" % "scalaj-http_2.11" % "2.4.2"
 /* Test */
 libraryDependencies += "org.scalatest" %% "scalatest" % scalatest_version % "test"
 libraryDependencies += "org.apache.spark" %% "spark-hive" % spark_version % "test"

@@ -1,7 +1,7 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{concat, sha1}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.elasticsearch.spark.sql._
 
 object Indexer extends App {
@@ -11,11 +11,20 @@ object Indexer extends App {
     .config("es.index.auto.create", "true")
     .appName(s"Indexer").getOrCreate()
 
-  import spark.implicits._
+  def run(df: DataFrame, indexName: String): Unit = {
+    import spark.implicits._
 
-  val df = spark.read.json(input).withColumn("id", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
+    val dfWithId =
+      df.columns.find(_.equals("id")).fold {
+        df.withColumn("id", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
+      }{_ =>
+        df
+      }
 
-  df.saveToEs(s"variants_bt_${batchId.toLowerCase()}_re_${release}/_doc", Map("es.mapping.id" -> "id"))
+    dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
+  }
+
+  run(spark.read.json(input), s"variants_bt_${batchId.toLowerCase()}_re_${release}")
 
 
 }
