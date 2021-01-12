@@ -11,6 +11,12 @@ Code copying data to elasticsearch using Spark
 sbt assembly
 ```
 
+## Upload Jar to s3
+
+```shell
+aws s3 cp target/scala-2.12/kf-etl-indexer-$VERSION.jar s3://kf-strides-variant-parquet-prd/jobs/kf-etl-indexer-$VERSION.jar
+```
+
 ## How to run tests
 
 ```shell

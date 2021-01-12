@@ -6,7 +6,7 @@ scalaVersion := "2.11.12"
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
-val spark_version = "2.4.6"
+val spark_version = "2.4.7"
 val elasticsearch_spark_version = "7.10.1"
 val scalatest_version = "3.2.0"
 
@@ -32,4 +32,4 @@ assemblyMergeStrategy in assembly := {
     val oldStrategy = (assemblyMergeStrategy in assembly).value
     oldStrategy(x)
 }
-assemblyJarName in assembly := "kf-etl-indexer.jar"
+assemblyJarName in assembly := s"kf-etl-indexer-$elasticsearch_spark_version.jar"

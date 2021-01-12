@@ -6,9 +6,10 @@ import org.elasticsearch.spark.sql._
 
 object Indexer extends App {
 
-  val Array(input, batchId, release) = args
+  val Array(input, esNodes, indexName, release) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
+    .config("es.nodes", esNodes)
     .appName(s"Indexer").getOrCreate()
 
   def run(df: DataFrame, indexName: String): Unit = {
@@ -24,7 +25,7 @@ object Indexer extends App {
     dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
   }
 
-  run(spark.read.json(input), s"variants_bt_${batchId.toLowerCase()}_re_${release}")
+  run(spark.read.json(input), s"${indexName}_$release")
 
 
 }
