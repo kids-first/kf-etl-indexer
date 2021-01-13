@@ -1,7 +1,7 @@
 #!/bin/bash
-release_id=$1
+release_id=${1:-"re_000009"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/tmp/variant_index_re_000009"}
-es_nodes=${3:-"localhost:9200"}
+es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com"}
 es_index_name=${4:-"variant_index"}
 jarV=${5:-"7.10.1"}
 number_instance=${6:-"2"}
