@@ -4,7 +4,7 @@ input=${2:-"s3a://kf-strides-variant-parquet-prd/tmp/variant_index_re_000009"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_index"}
 es_index_template=${5:-"variant_index_template.json"}
-jarV=${6:-"7.9.3"}
+jarV=${6:-"6.8.13"}
 number_instance=${7:-"4"}
 instance_type=${8:-"r5.4xlarge"}
 

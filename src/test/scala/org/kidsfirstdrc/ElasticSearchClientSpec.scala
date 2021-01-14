@@ -12,10 +12,10 @@ class ElasticSearchClientSpec extends AnyFlatSpec with GivenWhenThen with WithSp
   val indexName = "test"
   val templateFileName = "template.json"
   val templateName = "test_template"
-  val esUrl = "http://localhost:9200"
+  val esUrl = "http://localhost:9201" //assuming es 7 is on :9200 and es 6 on 9201
   val esClient = new ElasticSearchClient(esUrl)
 
-  "ES instance" should "be up on localhost:9200" in {
+  "ES instance" should "be up on localhost:9201" in {
     esClient.isRunning shouldBe true
   }
 

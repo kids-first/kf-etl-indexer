@@ -7,7 +7,7 @@ scalaVersion := "2.11.12"
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
 val spark_version = "2.4.7"
-val elasticsearch_spark_version = "7.9.3"
+val elasticsearch_spark_version = "6.8.13"
 val scalatest_version = "3.2.0"
 
 /* Runtime */
