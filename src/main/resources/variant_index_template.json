@@ -1,0 +1,415 @@
+{
+  "index_patterns": [
+    "variant*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 40
+    },
+    "mappings": {
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "chromosome": {
+          "type": "keyword"
+        },
+        "start": {
+          "type": "long"
+        },
+        "end": {
+          "type": "long"
+        },
+        "reference": {
+          "type": "keyword"
+        },
+        "alternate": {
+          "type": "keyword"
+        },
+        "studies": {
+          "properties": {
+            "study_id": {
+              "type": "keyword"
+            },
+            "consent_codes": {
+              "type": "keyword"
+            },
+            "frequencies": {
+              "properties": {
+                "hmb": {
+                  "properties": {
+                    "an": {
+                      "type": "long"
+                    },
+                    "ac": {
+                      "type": "long"
+                    },
+                    "af": {
+                      "type": "float"
+                    },
+                    "homozygotes": {
+                      "type": "long"
+                    },
+                    "heterozygotes": {
+                      "type": "long"
+                    }
+                  },
+                  "type": "nested"
+                },
+                "gru": {
+                  "properties": {
+                    "an": {
+                      "type": "long"
+                    },
+                    "ac": {
+                      "type": "long"
+                    },
+                    "af": {
+                      "type": "float"
+                    },
+                    "homozygotes": {
+                      "type": "long"
+                    },
+                    "heterozygotes": {
+                      "type": "long"
+                    }
+                  },
+                  "type": "nested"
+                }
+              },
+              "type": "nested"
+            }
+          },
+          "type": "nested"
+        },
+        "frequencies": {
+          "properties": {
+            "1k_genomes":{
+              "properties": {
+                "an": {
+                  "type": "long"
+                },
+                "ac": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                },
+                "homozygotes": {
+                  "type": "long"
+                },
+                "heterozygotes": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "topmed":{
+              "properties": {
+                "an": {
+                  "type": "long"
+                },
+                "ac": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                },
+                "homozygotes": {
+                  "type": "long"
+                },
+                "heterozygotes": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "gnomad_genomes_2_1":{
+              "properties": {
+                "an": {
+                  "type": "long"
+                },
+                "ac": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                },
+                "homozygotes": {
+                  "type": "long"
+                },
+                "heterozygotes": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "gnomad_exomes_2_1":{
+              "properties": {
+                "an": {
+                  "type": "long"
+                },
+                "ac": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                },
+                "homozygotes": {
+                  "type": "long"
+                },
+                "heterozygotes": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "gnomad_genomes_3_0":{
+              "properties": {
+                "an": {
+                  "type": "long"
+                },
+                "ac": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                },
+                "homozygotes": {
+                  "type": "long"
+                },
+                "heterozygotes": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "internal": {
+              "properties": {
+                "hmb": {
+                  "properties": {
+                    "an": {
+                      "type": "long"
+                    },
+                    "ac": {
+                      "type": "long"
+                    },
+                    "af": {
+                      "type": "float"
+                    },
+                    "homozygotes": {
+                      "type": "long"
+                    },
+                    "heterozygotes": {
+                      "type": "long"
+                    }
+                  },
+                  "type": "nested"
+                },
+                "gru": {
+                  "properties": {
+                    "an": {
+                      "type": "long"
+                    },
+                    "ac": {
+                      "type": "long"
+                    },
+                    "af": {
+                      "type": "float"
+                    },
+                    "homozygotes": {
+                      "type": "long"
+                    },
+                    "heterozygotes": {
+                      "type": "long"
+                    }
+                  },
+                  "type": "nested"
+                }
+              },
+              "type": "nested"
+            }
+          },
+          "type": "nested"
+        },
+        "clinvar": {
+          "properties": {
+            "clin_sig": {
+              "type": "keyword"
+            },
+            "clinvar_id": {
+              "type": "keyword"
+            }
+          },
+          "type": "nested"
+        },
+        "dbsnp_id": {
+          "type": "keyword"
+        },
+        "release_id": {
+          "type": "keyword"
+        },
+        "consequences": {
+          "properties": {
+            "symbol": {
+              "type": "keyword"
+            },
+            "impact": {
+              "type": "keyword"
+            },
+            "ensembl_gene_id": {
+              "type": "keyword"
+            },
+            "ensembl_transcript_id": {
+              "type": "keyword"
+            },
+            "ensembl_regulatory_id": {
+              "type": "keyword"
+            },
+            "feature_type": {
+              "type": "keyword"
+            },
+            "consequences": {
+              "type": "keyword"
+            },
+            "biotype": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "variant_class": {
+              "type": "keyword"
+            },
+            "strand": {
+              "type": "long"
+            },
+            "hgvsg": {
+              "type": "keyword"
+            },
+            "hgvsc": {
+              "type": "keyword"
+            },
+            "hgvsp": {
+              "type": "keyword"
+            },
+            "exon": {
+              "properties": {
+                "rank": {
+                  "type": "long"
+                },
+                "total": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "intron": {
+              "properties": {
+                "rank": {
+                  "type": "long"
+                },
+                "total": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            },
+            "cdna_position": {
+              "type": "long"
+            },
+            "cds_position": {
+              "type": "long"
+            },
+            "amino_acids": {
+              "properties": {
+                "reference": {
+                  "type": "keyword"
+                },
+                "variant": {
+                  "type": "keyword"
+                }
+              },
+              "type": "nested"
+            },
+            "codons": {
+              "properties": {
+                "reference": {
+                  "type": "keyword"
+                },
+                "variant": {
+                  "type": "keyword"
+                }
+              },
+              "type": "nested"
+            },
+            "protein_position": {
+              "type": "long"
+            },
+            "aa_change": {
+              "type": "keyword"
+            },
+            "coding_dna_change": {
+              "type": "keyword"
+            },
+            "canonical": {
+              "type": "boolean"
+            },
+            "scores": {
+              "properties": {
+                "conservations": {
+                  "properties": {
+                    "phylo_p17way_primate_rankscore": {
+                      "type": "float"
+                    }
+                  },
+                  "type": "nested"
+                },
+                "predictions": {
+                  "properties": {
+                    "sift_converted_rank_score": {
+                      "type": "float"
+                    },
+                    "sift_pred": {
+                      "type": "keyword"
+                    },
+                    "polyphen2_hvar_score": {
+                      "type": "float"
+                    },
+                    "polyphen2_hvar_pred": {
+                      "type": "keyword"
+                    },
+                    "FATHMM_converted_rankscore": {
+                      "type": "keyword"
+                    },
+                    "fathmm_pred": {
+                      "type": "keyword"
+                    },
+                    "cadd_score": {
+                      "type": "keyword"
+                    },
+                    "dann_score": {
+                      "type": "keyword"
+                    },
+                    "revel_rankscore": {
+                      "type": "float"
+                    },
+                    "lrt_converted_rankscore": {
+                      "type": "float"
+                    },
+                    "lrt_pred": {
+                      "type": "keyword"
+                    }
+                  },
+                  "type": "nested"
+                }
+              },
+              "type": "nested"
+            }
+          },
+          "type": "nested"
+        }
+      }
+    }
+  }
+}
