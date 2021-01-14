@@ -3,9 +3,10 @@ release_id=${1:-"re_000009"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/tmp/variant_index_re_000009"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_index"}
-jarV=${5:-"7.9.3"}
-number_instance=${6:-"2"}
-instance_type=${7:-"r5.4xlarge"}
+es_index_template=${5:-"variant_index_template.json"}
+jarV=${6:-"7.9.3"}
+number_instance=${7:-"4"}
+instance_type=${8:-"r5.4xlarge"}
 
 steps=$(cat <<EOF
 [
@@ -20,7 +21,8 @@ steps=$(cat <<EOF
       "${input}",
       "${es_nodes}",
       "${es_index_name}",
-      "${release_id}"
+      "${release_id}",
+      "${es_index_template}"
     ],
     "Type": "CUSTOM_JAR",
     "ActionOnFailure": "TERMINATE_CLUSTER",
