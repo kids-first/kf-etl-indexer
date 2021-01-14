@@ -2,7 +2,7 @@ package org.kidsfirstdrc.utils
 
 import org.apache.commons.io.FileUtils
 import org.apache.spark.sql.SparkSession
-import scalaj.http.Http
+import org.kidsfirstdrc.variant.ElasticSearchClient
 
 import java.io.File
 import java.nio.file.{Files, Path}
@@ -29,12 +29,13 @@ trait WithSparkSession {
   }
 
   def withEsIndex[T](indexName: String)(block: String => T): T = {
+    val esClient = new ElasticSearchClient("http://localhost:9200")
+    esClient.createIndex(indexName)
     val indexUrl = s"http://localhost:9200/$indexName"
-    Http(indexUrl).method("put").execute()
     try {
       block(indexUrl)
     } finally {
-      Http(indexUrl).method("delete").execute()
+      esClient.deleteIndex(indexName)
     }
   }
 }

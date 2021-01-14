@@ -1,9 +1,9 @@
 #!/bin/bash
 release_id=${1:-"re_000009"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/tmp/variant_index_re_000009"}
-es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com"}
+es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_index"}
-jarV=${5:-"7.10.1"}
+jarV=${5:-"7.9.3"}
 number_instance=${6:-"2"}
 instance_type=${7:-"r5.4xlarge"}
 
@@ -12,8 +12,8 @@ steps=$(cat <<EOF
   {
     "Args": [
       "spark-submit",
-      "--deploy-mode",
-      "client",
+      "--deploy-mode", "client",
+      "--packages", "org.elasticsearch:elasticsearch-spark-20_2.11:${jarV},commons-httpclient:commons-httpclient:3.1",
       "--class",
       "org.kidsfirstdrc.variant.Indexer",
       "s3a://kf-strides-variant-parquet-prd/jobs/kf-etl-indexer-${jarV}.jar",
