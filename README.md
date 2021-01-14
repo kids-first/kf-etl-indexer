@@ -3,7 +3,10 @@ Code copying data to elasticsearch using Spark
 
 ## Requirements
 * Java 8 installed
-* Elasticsearch 7.x up and running (tested only with 7.10)
+
+## Branches
+branch *elasticsearch_6.x* supports ElasticSearch 6.8.13
+branch *elasticsearch_7.x* supports ElasticSearch 7.10.1
 
 ## How to build the code
 
