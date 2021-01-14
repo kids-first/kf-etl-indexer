@@ -1,6 +1,6 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.http.client.methods.{HttpDelete, HttpPut}
+import org.apache.http.client.methods.{HttpDelete, HttpGet, HttpPut}
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.{HttpHeaders, HttpResponse}
@@ -9,6 +9,21 @@ import java.io.File
 
 class ElasticSearchClient(url: String) {
 
+  /**
+   * Sends a GET on the url and verify the status code of the response is 200
+   * @return true if running
+   *         false if not running or if status code not 200
+   */
+  def isRunning: Boolean = {
+    new DefaultHttpClient().execute(new HttpGet(url)).getStatusLine.getStatusCode == 200
+  }
+
+  /**
+   * Set a template to ElasticSearch
+   * @param templateFileName path of the template.json that is expected to be in the resource folder
+   * @param templateName name for the template
+   * @return the http response sent by ElasticSearch
+   */
   def setTemplate(templateFileName: String, templateName: String): HttpResponse = {
 
     val requestUrl = s"$url/_index_template/$templateName"
@@ -32,6 +47,11 @@ class ElasticSearchClient(url: String) {
     response
   }
 
+  /**
+   * Delete a template
+   * @param templateName name of the template to delete
+   * @return the http response sent by ElasticSearch
+   */
   def deleteTemplate(templateName: String): HttpResponse = {
     val requestUrl = s"$url/_index_template/$templateName"
     val request = new HttpDelete(requestUrl)
@@ -39,6 +59,11 @@ class ElasticSearchClient(url: String) {
     response
   }
 
+  /**
+   * Create an index
+   * @param indexName name of the index to create
+   * @return the http response sent by ElasticSearch
+   */
   def createIndex(indexName: String): HttpResponse = {
     val requestUrl = s"$url/$indexName"
     val request = new HttpPut(requestUrl)
@@ -46,6 +71,11 @@ class ElasticSearchClient(url: String) {
     response
   }
 
+  /**
+   * Delete an index
+   * @param indexName name of the index to delete
+   * @return the http response sent by ElasticSearch
+   */
   def deleteIndex(indexName: String): HttpResponse = {
     val requestUrl = s"$url/$indexName"
     val request = new HttpDelete(requestUrl)
