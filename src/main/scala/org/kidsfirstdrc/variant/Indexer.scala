@@ -8,20 +8,16 @@ import scala.util.Try
 
 object Indexer extends App {
 
-  val Array(input, esNodes, indexName, release, templateFileName) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
-    .config("es.nodes", esNodes)
+    .config("es.nodes", args(1))
     .config("es.wan.only", true)
     .appName(s"Indexer").getOrCreate()
+  spark.sparkContext.setLogLevel("ERROR")
 
-  def setTemplate(esNodes: String, templateFileName: String): Unit = {
-    Try {
-      val esClient = new ElasticSearchClient(esNodes.split(',').head)
-      val response = esClient.setTemplate(templateFileName, templateFileName.split('.').head)
-      println(response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-    }
-  }
+  println(s"ARGS: " + args.mkString("[", ", ", "]"))
+
+  val Array(input, esNodes, indexName, release, templateFileName) = args
 
   def run(df: DataFrame, indexName: String): Unit = {
     import spark.implicits._
@@ -36,7 +32,13 @@ object Indexer extends App {
     dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
   }
 
-  setTemplate(esNodes, templateFileName)
+  Try {
+    val esClient = new ElasticSearchClient(esNodes.split(',').head)
+    val respDelete = esClient.deleteIndex(indexName)
+    println(s"DELETE INDEX[${indexName}] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+    val response = esClient.setTemplate(s"$templateFileName.json", templateFileName.split('.').head)
+    println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
+  }
   run(spark.read.json(input), s"${indexName}_$release")
 
 
