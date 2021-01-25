@@ -11,7 +11,7 @@ object Indexer extends App {
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
     .config("es.nodes", args(1))
-    .config("es.wan.only", true)
+    .config("es.wan.only", "true")
     .appName(s"Indexer").getOrCreate()
   spark.sparkContext.setLogLevel("ERROR")
 

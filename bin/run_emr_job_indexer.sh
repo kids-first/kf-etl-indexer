@@ -1,7 +1,7 @@
 #!/bin/bash
 release_id=${1:-"re_000009"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/tmp/variant_index_re_000009_SAMPLE"}
-es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com"}
+es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_index"}
 es_index_template=${5:-"variant_index_template.json"}
 jarV=${6:-"7.9.3"}
@@ -14,8 +14,8 @@ subnetId="subnet-0f822f9f9ff99871a"
 serviceAccessSecurityGroup="sg-04894e9def6241eba"
 emrManagedSlaveSecurityGroup="sg-0c131e9d64cec6a14"
 emrManagedMasterSecurityGroup="sg-01a0dfc74131cff1d"
-emrServiceRole=kf-variant-emr-prd-role # EMR_DefaultRole
-ec2ProfileRole=kf-variant-emr-ec2-prd-profile #EMR_EC2_DefaultRole
+emrServiceRole=EMR_DefaultRole #kf-variant-emr-prd-role # EMR_DefaultRole
+ec2ProfileRole=EMR_EC2_DefaultRole #kf-variant-emr-ec2-prd-profile #EMR_EC2_DefaultRole
 
 #if env = prod
 if [ ${env} == "prod" ]; then subnetId="subnet-00aab84919d5a44e2"; fi
