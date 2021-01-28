@@ -3,6 +3,7 @@ package org.kidsfirstdrc.variant
 import org.apache.http.client.methods.{HttpDelete, HttpGet, HttpPut}
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.DefaultHttpClient
+import org.apache.http.util.EntityUtils
 import org.apache.http.{HttpHeaders, HttpResponse}
 
 import java.io.File
@@ -15,7 +16,30 @@ class ElasticSearchClient(url: String) {
    *         false if not running or if status code not 200
    */
   def isRunning: Boolean = {
-    new DefaultHttpClient().execute(new HttpGet(url)).getStatusLine.getStatusCode == 200
+    val response = new DefaultHttpClient().execute(new HttpGet(url))
+
+    println(s"""
+               |GET $url
+               |${response.toString}
+               |${EntityUtils.toString(response.getEntity)}
+               |""".stripMargin)
+    response.getStatusLine.getStatusCode == 200
+  }
+
+  /**
+   * Check roles/http endpoint
+   * @return true if running
+   *         false if not running or if status code not 200
+   */
+  def checkNodeRoles: Boolean = {
+    val response = new DefaultHttpClient().execute(new HttpGet(url + "/_nodes/http"))
+
+    println(s"""
+               |GET $url/_nodes/http
+               |${response.toString}
+               |${EntityUtils.toString(response.getEntity)}
+               |""".stripMargin)
+    response.getStatusLine.getStatusCode == 200
   }
 
   /**

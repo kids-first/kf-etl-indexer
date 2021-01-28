@@ -6,7 +6,7 @@ Code copying data to elasticsearch using Spark
 
 ## Branches
 - branch *elasticsearch_6.x* supports ElasticSearch 6.8.13
-- branch *elasticsearch_7.x* supports ElasticSearch 7.10.1
+- branch *elasticsearch_7.x* supports ElasticSearch 7.9.3
 
 ## Usage
 
