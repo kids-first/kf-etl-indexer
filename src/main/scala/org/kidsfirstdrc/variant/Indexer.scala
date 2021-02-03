@@ -29,14 +29,6 @@ object Indexer extends App {
 
   val Array(input, esNodes, indexName, release, templateFileName) = args
 
-  def setTemplate(esNodes: String, templateFileName: String): Unit = {
-    Try {
-      val esClient = new ElasticSearchClient(esNodes.split(',').head)
-      val response = esClient.setTemplate(templateFileName, templateFileName.split('.').head)
-      println(response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-    }
-  }
-
   def run(df: DataFrame, indexName: String): Unit = {
     import spark.implicits._
 
@@ -50,7 +42,19 @@ object Indexer extends App {
     dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
   }
 
-  setTemplate(esNodes, templateFileName)
+  val esClient = new ElasticSearchClient(esNodes.split(',').head)
+  Try {
+    println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
+    println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
+
+    val respDelete = esClient.deleteIndex(indexName)
+    println(s"DELETE INDEX[${indexName}] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+  }
+  Try {
+    val response = esClient.setTemplate(s"$templateFileName.json", templateFileName.split('.').head)
+    println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
+
+  }
   run(spark.read.json(input), s"${indexName}_$release")
 
 
