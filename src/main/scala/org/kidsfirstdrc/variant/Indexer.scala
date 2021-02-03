@@ -1,6 +1,6 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.spark.sql.functions.{concat, sha1}
+import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.elasticsearch.spark.sql._
 
@@ -11,8 +11,18 @@ object Indexer extends App {
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
     .config("es.nodes", args(1))
+    .config("es.nodes.client.only", "false")
+    .config("es.nodes.discovery", "false")
+    .config("es.nodes.wan.only", "true")
+    .config("es.read.ignore_exception",  "true")
+    .config("es.port", "443")
     .config("es.wan.only", "true")
+    .config("es.write.ignore_exception", "true")
+
+    .config("spark.es.nodes.client.only", "false")
+    .config("spark.es.nodes.wan.only", "true")
     .appName(s"Indexer").getOrCreate()
+
   spark.sparkContext.setLogLevel("ERROR")
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
@@ -32,14 +42,19 @@ object Indexer extends App {
     dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
   }
 
+  val esClient = new ElasticSearchClient(esNodes.split(',').head)
   Try {
-    val esClient = new ElasticSearchClient(esNodes.split(',').head)
+    println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
+    println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
+
     val respDelete = esClient.deleteIndex(indexName)
     println(s"DELETE INDEX[${indexName}] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+  }
+  Try {
     val response = esClient.setTemplate(s"$templateFileName.json", templateFileName.split('.').head)
     println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
+
   }
   run(spark.read.json(input), s"${indexName}_$release")
-
 
 }
