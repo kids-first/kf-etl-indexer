@@ -8,12 +8,26 @@ import scala.util.Try
 
 object Indexer extends App {
 
-  val Array(input, esNodes, indexName, release, templateFileName) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
-    .config("es.nodes", esNodes)
-    .config("es.wan.only", true)
+    .config("es.nodes", args(1))
+    .config("es.nodes.client.only", "false")
+    .config("es.nodes.discovery", "false")
+    .config("es.nodes.wan.only", "true")
+    .config("es.read.ignore_exception",  "true")
+    .config("es.port", "443")
+    .config("es.wan.only", "true")
+    .config("es.write.ignore_exception", "true")
+
+    .config("spark.es.nodes.client.only", "false")
+    .config("spark.es.nodes.wan.only", "true")
     .appName(s"Indexer").getOrCreate()
+
+  spark.sparkContext.setLogLevel("ERROR")
+
+  println(s"ARGS: " + args.mkString("[", ", ", "]"))
+
+  val Array(input, esNodes, indexName, release, templateFileName) = args
 
   def setTemplate(esNodes: String, templateFileName: String): Unit = {
     Try {
