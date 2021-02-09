@@ -1,7 +1,5 @@
 {
-  "index_patterns": [
-    "variant*"
-  ],
+  "index_patterns": ["variant_*"],
   "template": {
     "settings": {
       "number_of_shards": 40
@@ -54,7 +52,7 @@
                       "type": "long"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 },
                 "gru": {
                   "properties": {
@@ -74,10 +72,10 @@
                       "type": "long"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 }
               },
-              "type": "nested"
+              "type": "object"
             }
           },
           "type": "nested"
@@ -102,7 +100,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "topmed":{
               "properties": {
@@ -122,7 +120,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "gnomad_genomes_2_1":{
               "properties": {
@@ -142,7 +140,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "gnomad_exomes_2_1":{
               "properties": {
@@ -162,7 +160,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "gnomad_genomes_3_0":{
               "properties": {
@@ -182,7 +180,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "internal": {
               "properties": {
@@ -204,7 +202,7 @@
                       "type": "long"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 },
                 "gru": {
                   "properties": {
@@ -224,13 +222,13 @@
                       "type": "long"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 }
               },
-              "type": "nested"
+              "type": "object"
             }
           },
-          "type": "nested"
+          "type": "object"
         },
         "clinvar": {
           "properties": {
@@ -270,7 +268,7 @@
               "type": "keyword"
             },
             "consequences": {
-              "type": "keyword"
+              "type": "nested"
             },
             "biotype": {
               "type": "keyword"
@@ -302,7 +300,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "intron": {
               "properties": {
@@ -313,7 +311,7 @@
                   "type": "long"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "cdna_position": {
               "type": "long"
@@ -330,7 +328,7 @@
                   "type": "keyword"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "codons": {
               "properties": {
@@ -341,7 +339,7 @@
                   "type": "keyword"
                 }
               },
-              "type": "nested"
+              "type": "object"
             },
             "protein_position": {
               "type": "long"
@@ -363,7 +361,7 @@
                       "type": "float"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 },
                 "predictions": {
                   "properties": {
@@ -401,10 +399,10 @@
                       "type": "keyword"
                     }
                   },
-                  "type": "nested"
+                  "type": "object"
                 }
               },
-              "type": "nested"
+              "type": "object"
             }
           },
           "type": "nested"
