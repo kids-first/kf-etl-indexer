@@ -13,9 +13,10 @@ class ElasticSearchClientSpec extends AnyFlatSpec with GivenWhenThen with WithSp
   val templateFileName = "template.json"
   val templateName = "test_template"
   val esUrl = "http://localhost:9200"
+  //qa testing: val esUrl = "https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"
   val esClient = new ElasticSearchClient(esUrl)
 
-  "ES instance" should "be up on localhost:9200" in {
+  "ES instance" should s"be up on $esUrl" in {
     esClient.isRunning shouldBe true
   }
 

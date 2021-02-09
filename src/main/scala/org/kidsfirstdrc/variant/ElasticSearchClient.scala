@@ -50,7 +50,7 @@ class ElasticSearchClient(url: String) {
    */
   def setTemplate(templateFileName: String, templateName: String): HttpResponse = {
 
-    val requestUrl = s"$url/_index_template/$templateName"
+    val requestUrl = s"$url/_template/$templateName"
 
 
     val path = getClass.getClassLoader.getResource(templateFileName).getPath
@@ -77,7 +77,7 @@ class ElasticSearchClient(url: String) {
    * @return the http response sent by ElasticSearch
    */
   def deleteTemplate(templateName: String): HttpResponse = {
-    val requestUrl = s"$url/_index_template/$templateName"
+    val requestUrl = s"$url/_template/$templateName"
     val request = new HttpDelete(requestUrl)
     val response = new DefaultHttpClient().execute(request)
     response
