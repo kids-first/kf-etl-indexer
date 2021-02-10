@@ -50,11 +50,8 @@ object Indexer extends App {
     val respDelete = esClient.deleteIndex(indexName)
     println(s"DELETE INDEX[${indexName}] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
   }
-  Try {
-    val response = esClient.setTemplate(s"$templateFileName.json", templateFileName.split('.').head)
-    println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-
-  }
+  val response = esClient.setTemplate(s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName", templateFileName.split('.').head)
+  println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
   run(spark.read.json(input), s"${indexName}_$release")
 
 }
