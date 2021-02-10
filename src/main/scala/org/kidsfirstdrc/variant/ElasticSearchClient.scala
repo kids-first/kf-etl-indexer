@@ -5,6 +5,7 @@ import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.util.EntityUtils
 import org.apache.http.{HttpHeaders, HttpResponse}
+import org.apache.spark.sql.SparkSession
 
 import java.io.File
 
@@ -44,20 +45,22 @@ class ElasticSearchClient(url: String) {
 
   /**
    * Set a template to ElasticSearch
-   * @param templateFileName path of the template.json that is expected to be in the resource folder
+   * @param templatePath path of the template.json that is expected to be in the resource folder
    * @param templateName name for the template
    * @return the http response sent by ElasticSearch
    */
-  def setTemplate(templateFileName: String, templateName: String): HttpResponse = {
+  def setTemplate(templatePath: String, templateName: String)(implicit spark: SparkSession): HttpResponse = {
 
     val requestUrl = s"$url/_template/$templateName"
 
 
-    val path = getClass.getClassLoader.getResource(templateFileName).getPath
-    if (!new File(path).exists()) throw new Exception(s"File not found: [$path]")
-    val src = scala.io.Source.fromFile(new File(path))
-    val fileContent = src.getLines().mkString("")
-    src.close()
+    //val path = getClass.getClassLoader.getResource(templatePath).getPath
+    //if (!new File(path).exists()) throw new Exception(s"File not found: [$path]")
+    //val src = scala.io.Source.fromFile(new File(path))
+    //val fileContent = src.getLines().mkString("")
+    //src.close()
+
+    val fileContent = spark.read.option("wholetext", "true").textFile(templatePath).collect().mkString
 
     println(s"SENDING: PUT $requestUrl with content: $fileContent")
 
@@ -67,7 +70,7 @@ class ElasticSearchClient(url: String) {
     val response = new DefaultHttpClient().execute(request)
     val status = response.getStatusLine
     if (!status.getStatusCode.equals(200))
-      throw new Exception(s"Server could not set template [$templateFileName] and replied :${status.getStatusCode + " : " + status.getReasonPhrase}")
+      throw new Exception(s"Server could not set template [$templatePath] and replied :${status.getStatusCode + " : " + status.getReasonPhrase}")
     response
   }
 
