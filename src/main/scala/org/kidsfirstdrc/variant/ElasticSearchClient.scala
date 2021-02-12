@@ -7,8 +7,6 @@ import org.apache.http.util.EntityUtils
 import org.apache.http.{HttpHeaders, HttpResponse}
 import org.apache.spark.sql.SparkSession
 
-import java.io.File
-
 class ElasticSearchClient(url: String) {
 
   /**
@@ -49,16 +47,10 @@ class ElasticSearchClient(url: String) {
    * @param templateName name for the template
    * @return the http response sent by ElasticSearch
    */
-  def setTemplate(templatePath: String, templateName: String)(implicit spark: SparkSession): HttpResponse = {
+  def setTemplate(templatePath: String)(implicit spark: SparkSession): HttpResponse = {
 
+    val templateName = templatePath.split('.').dropRight(1).last.split('/').last
     val requestUrl = s"$url/_template/$templateName"
-
-
-    //val path = getClass.getClassLoader.getResource(templatePath).getPath
-    //if (!new File(path).exists()) throw new Exception(s"File not found: [$path]")
-    //val src = scala.io.Source.fromFile(new File(path))
-    //val fileContent = src.getLines().mkString("")
-    //src.close()
 
     val fileContent = spark.read.option("wholetext", "true").textFile(templatePath).collect().mkString
 
