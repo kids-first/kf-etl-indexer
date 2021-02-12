@@ -1,412 +1,393 @@
 {
-  "index_patterns": ["variant_*"],
-  "template": {
-    "settings": {
-      "number_of_shards": 40
-    },
-    "mappings": {
-      "properties": {
-        "id": {
-          "type": "keyword"
-        },
-        "chromosome": {
-          "type": "keyword"
-        },
-        "start": {
-          "type": "long"
-        },
-        "end": {
-          "type": "long"
-        },
-        "reference": {
-          "type": "keyword"
-        },
-        "alternate": {
-          "type": "keyword"
-        },
-        "studies": {
-          "properties": {
-            "study_id": {
-              "type": "keyword"
-            },
-            "consent_codes": {
-              "type": "keyword"
-            },
-            "frequencies": {
-              "properties": {
-                "hmb": {
-                  "properties": {
-                    "an": {
-                      "type": "long"
-                    },
-                    "ac": {
-                      "type": "long"
-                    },
-                    "af": {
-                      "type": "float"
-                    },
-                    "homozygotes": {
-                      "type": "long"
-                    },
-                    "heterozygotes": {
-                      "type": "long"
-                    }
-                  },
-                  "type": "object"
-                },
-                "gru": {
-                  "properties": {
-                    "an": {
-                      "type": "long"
-                    },
-                    "ac": {
-                      "type": "long"
-                    },
-                    "af": {
-                      "type": "float"
-                    },
-                    "homozygotes": {
-                      "type": "long"
-                    },
-                    "heterozygotes": {
-                      "type": "long"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
-              "type": "object"
-            }
+  "index_patterns": ["variant_index*"],
+  "settings": {
+    "number_of_shards": 40
+  },
+  "mappings" : {
+    "properties" : {
+      "alternate" : {
+        "type": "keyword"
+      },
+      "chromosome" : {
+        "type": "keyword"
+      },
+      "clinvar" : {
+        "properties" : {
+          "clin_sig" : {
+            "type": "keyword"
           },
-          "type": "nested"
-        },
-        "frequencies": {
-          "properties": {
-            "1k_genomes":{
-              "properties": {
-                "an": {
-                  "type": "long"
-                },
-                "ac": {
-                  "type": "long"
-                },
-                "af": {
-                  "type": "float"
-                },
-                "homozygotes": {
-                  "type": "long"
-                },
-                "heterozygotes": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "topmed":{
-              "properties": {
-                "an": {
-                  "type": "long"
-                },
-                "ac": {
-                  "type": "long"
-                },
-                "af": {
-                  "type": "float"
-                },
-                "homozygotes": {
-                  "type": "long"
-                },
-                "heterozygotes": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "gnomad_genomes_2_1":{
-              "properties": {
-                "an": {
-                  "type": "long"
-                },
-                "ac": {
-                  "type": "long"
-                },
-                "af": {
-                  "type": "float"
-                },
-                "homozygotes": {
-                  "type": "long"
-                },
-                "heterozygotes": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "gnomad_exomes_2_1":{
-              "properties": {
-                "an": {
-                  "type": "long"
-                },
-                "ac": {
-                  "type": "long"
-                },
-                "af": {
-                  "type": "float"
-                },
-                "homozygotes": {
-                  "type": "long"
-                },
-                "heterozygotes": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "gnomad_genomes_3_0":{
-              "properties": {
-                "an": {
-                  "type": "long"
-                },
-                "ac": {
-                  "type": "long"
-                },
-                "af": {
-                  "type": "float"
-                },
-                "homozygotes": {
-                  "type": "long"
-                },
-                "heterozygotes": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "internal": {
-              "properties": {
-                "hmb": {
-                  "properties": {
-                    "an": {
-                      "type": "long"
-                    },
-                    "ac": {
-                      "type": "long"
-                    },
-                    "af": {
-                      "type": "float"
-                    },
-                    "homozygotes": {
-                      "type": "long"
-                    },
-                    "heterozygotes": {
-                      "type": "long"
-                    }
-                  },
-                  "type": "object"
-                },
-                "gru": {
-                  "properties": {
-                    "an": {
-                      "type": "long"
-                    },
-                    "ac": {
-                      "type": "long"
-                    },
-                    "af": {
-                      "type": "float"
-                    },
-                    "homozygotes": {
-                      "type": "long"
-                    },
-                    "heterozygotes": {
-                      "type": "long"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
-              "type": "object"
-            }
-          },
-          "type": "object"
-        },
-        "clinvar": {
-          "properties": {
-            "clin_sig": {
-              "type": "keyword"
-            },
-            "clinvar_id": {
-              "type": "keyword"
-            }
-          },
-          "type": "nested"
-        },
-        "dbsnp_id": {
-          "type": "keyword"
-        },
-        "release_id": {
-          "type": "keyword"
-        },
-        "consequences": {
-          "properties": {
-            "symbol": {
-              "type": "keyword"
-            },
-            "impact": {
-              "type": "keyword"
-            },
-            "ensembl_gene_id": {
-              "type": "keyword"
-            },
-            "ensembl_transcript_id": {
-              "type": "keyword"
-            },
-            "ensembl_regulatory_id": {
-              "type": "keyword"
-            },
-            "feature_type": {
-              "type": "keyword"
-            },
-            "consequences": {
-              "type": "nested"
-            },
-            "biotype": {
-              "type": "keyword"
-            },
-            "name": {
-              "type": "keyword"
-            },
-            "variant_class": {
-              "type": "keyword"
-            },
-            "strand": {
-              "type": "long"
-            },
-            "hgvsg": {
-              "type": "keyword"
-            },
-            "hgvsc": {
-              "type": "keyword"
-            },
-            "hgvsp": {
-              "type": "keyword"
-            },
-            "exon": {
-              "properties": {
-                "rank": {
-                  "type": "long"
-                },
-                "total": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "intron": {
-              "properties": {
-                "rank": {
-                  "type": "long"
-                },
-                "total": {
-                  "type": "long"
-                }
-              },
-              "type": "object"
-            },
-            "cdna_position": {
-              "type": "long"
-            },
-            "cds_position": {
-              "type": "long"
-            },
-            "amino_acids": {
-              "properties": {
-                "reference": {
-                  "type": "keyword"
-                },
-                "variant": {
-                  "type": "keyword"
-                }
-              },
-              "type": "object"
-            },
-            "codons": {
-              "properties": {
-                "reference": {
-                  "type": "keyword"
-                },
-                "variant": {
-                  "type": "keyword"
-                }
-              },
-              "type": "object"
-            },
-            "protein_position": {
-              "type": "long"
-            },
-            "aa_change": {
-              "type": "keyword"
-            },
-            "coding_dna_change": {
-              "type": "keyword"
-            },
-            "canonical": {
-              "type": "boolean"
-            },
-            "scores": {
-              "properties": {
-                "conservations": {
-                  "properties": {
-                    "phylo_p17way_primate_rankscore": {
-                      "type": "float"
-                    }
-                  },
-                  "type": "object"
-                },
-                "predictions": {
-                  "properties": {
-                    "sift_converted_rank_score": {
-                      "type": "float"
-                    },
-                    "sift_pred": {
-                      "type": "keyword"
-                    },
-                    "polyphen2_hvar_score": {
-                      "type": "float"
-                    },
-                    "polyphen2_hvar_pred": {
-                      "type": "keyword"
-                    },
-                    "FATHMM_converted_rankscore": {
-                      "type": "keyword"
-                    },
-                    "fathmm_pred": {
-                      "type": "keyword"
-                    },
-                    "cadd_score": {
-                      "type": "keyword"
-                    },
-                    "dann_score": {
-                      "type": "keyword"
-                    },
-                    "revel_rankscore": {
-                      "type": "float"
-                    },
-                    "lrt_converted_rankscore": {
-                      "type": "float"
-                    },
-                    "lrt_pred": {
-                      "type": "keyword"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
-              "type": "object"
-            }
-          },
-          "type": "nested"
+          "name" : {
+            "type": "keyword"
+          }
         }
+      },
+      "consequences" : {
+        "properties" : {
+          "aa_change" : {
+            "type": "keyword"
+          },
+          "amino_acids" : {
+            "properties" : {
+              "reference" : {
+                "type": "keyword"
+              },
+              "variant" : {
+                "type": "keyword"
+              }
+            }
+          },
+          "biotype" : {
+            "type": "keyword"
+          },
+          "canonical" : {
+            "type" : "boolean"
+          },
+          "cdna_position" : {
+            "type" : "long"
+          },
+          "cds_position" : {
+            "type" : "long"
+          },
+          "coding_dna_change" : {
+            "type": "keyword"
+          },
+          "codons" : {
+            "properties" : {
+              "reference" : {
+                "type": "keyword"
+              },
+              "variant" : {
+                "type": "keyword"
+              }
+            }
+          },
+          "consequences" : {
+            "type": "keyword"
+          },
+          "ensembl_gene_id" : {
+            "type": "keyword"
+          },
+          "ensembl_transcript_id" : {
+            "type": "keyword"
+          },
+          "entrez_gene_id" : {
+            "type" : "long"
+          },
+          "exon" : {
+            "properties" : {
+              "rank" : {
+                "type" : "long"
+              },
+              "total" : {
+                "type" : "long"
+              }
+            }
+          },
+          "feature_type" : {
+            "type": "keyword"
+          },
+          "hgvsc" : {
+            "type": "keyword"
+          },
+          "hgvsg" : {
+            "type": "keyword"
+          },
+          "hgvsp" : {
+            "type": "keyword"
+          },
+          "impact" : {
+            "type": "keyword"
+          },
+          "intron" : {
+            "properties" : {
+              "rank" : {
+                "type" : "long"
+              },
+              "total" : {
+                "type" : "long"
+              }
+            }
+          },
+          "name" : {
+            "type": "keyword"
+          },
+          "omim_gene_id" : {
+            "type" : "long"
+          },
+          "protein_position" : {
+            "type" : "long"
+          },
+          "scores" : {
+            "properties" : {
+              "conservations" : {
+                "properties" : {
+                  "phylo_p17way_primate_rankscore" : {
+                    "type" : "float"
+                  }
+                }
+              },
+              "predictions" : {
+                "properties" : {
+                  "FATHMM_converted_rankscore" : {
+                    "type" : "float"
+                  },
+                  "cadd_score" : {
+                    "type" : "float"
+                  },
+                  "dann_score" : {
+                    "type" : "float"
+                  },
+                  "fathmm_pred" : {
+                    "type": "keyword"
+                  },
+                  "lrt_converted_rankscore" : {
+                    "type" : "float"
+                  },
+                  "lrt_pred" : {
+                    "type": "keyword"
+                  },
+                  "polyphen2_hvar_pred" : {
+                    "type": "keyword"
+                  },
+                  "polyphen2_hvar_score" : {
+                    "type" : "float"
+                  },
+                  "revel_rankscore" : {
+                    "type" : "float"
+                  },
+                  "sift_converted_rank_score" : {
+                    "type" : "float"
+                  },
+                  "sift_pred" : {
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          },
+          "strand" : {
+            "type" : "long"
+          },
+          "symbol" : {
+            "type": "keyword"
+          },
+          "variant_class" : {
+            "type": "keyword"
+          }
+        },
+        "type": "nested"
+      },
+      "dbsnp_id" : {
+        "type": "keyword"
+      },
+      "end" : {
+        "type" : "long"
+      },
+      "frequencies" : {
+        "properties" : {
+          "1k_genomes" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              }
+            }
+          },
+          "gnomad_exomes_2_1" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              },
+              "homozygotes" : {
+                "type" : "long"
+              }
+            }
+          },
+          "gnomad_genomes_2_1" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              },
+              "homozygotes" : {
+                "type" : "long"
+              }
+            }
+          },
+          "gnomad_genomes_3_0" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              },
+              "homozygotes" : {
+                "type" : "long"
+              }
+            }
+          },
+          "internal" : {
+            "properties" : {
+              "gru" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              },
+              "hmb" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              }
+            }
+          },
+          "topmed" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              },
+              "heterozygotes" : {
+                "type" : "long"
+              },
+              "homozygotes" : {
+                "type" : "long"
+              }
+            }
+          }
+        }
+      },
+      "gru_participant_number" : {
+        "type" : "long"
+      },
+      "hmb_participant_number" : {
+        "type" : "long"
+      },
+      "id" : {
+        "type": "keyword"
+      },
+      "reference" : {
+        "type": "keyword"
+      },
+      "release_id" : {
+        "type": "keyword"
+      },
+      "start" : {
+        "type" : "long"
+      },
+      "studies" : {
+        "properties" : {
+          "acls" : {
+            "type": "keyword"
+          },
+          "external_study_ids" : {
+            "type": "keyword"
+          },
+          "frequencies" : {
+            "properties" : {
+              "gru" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              },
+              "hmb" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              }
+            }
+          },
+          "gru_participant_number" : {
+            "type" : "long"
+          },
+          "hmb_participant_number" : {
+            "type" : "long"
+          },
+          "study_id" : {
+            "type": "keyword"
+          }
+        },
+        "type": "nested"
       }
     }
   }
