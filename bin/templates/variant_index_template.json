@@ -5,11 +5,79 @@
   },
   "mappings" : {
     "properties" : {
+      "chromosome" : {
+        "type": "keyword"
+      },
+      "start" : {
+        "type" : "long"
+      },
+      "reference" : {
+        "type": "keyword"
+      },
       "alternate" : {
         "type": "keyword"
       },
-      "chromosome" : {
-        "type": "keyword"
+      "end" : {
+        "type" : "long"
+      },
+      "studies" : {
+        "properties" : {
+          "acls" : {
+            "type": "keyword"
+          },
+          "external_study_ids" : {
+            "type": "keyword"
+          },
+          "frequencies" : {
+            "properties" : {
+              "gru" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              },
+              "hmb" : {
+                "properties" : {
+                  "ac" : {
+                    "type" : "long"
+                  },
+                  "af" : {
+                    "type" : "float"
+                  },
+                  "an" : {
+                    "type" : "long"
+                  },
+                  "heterozygotes" : {
+                    "type" : "long"
+                  },
+                  "homozygotes" : {
+                    "type" : "long"
+                  }
+                }
+              }
+            }
+          },
+          "participant_number" : {
+            "type" : "long"
+          },
+          "study_id" : {
+            "type": "keyword"
+          }
+        },
+        "type": "nested"
       },
       "clinvar" : {
         "properties" : {
@@ -180,9 +248,6 @@
       "dbsnp_id" : {
         "type": "keyword"
       },
-      "end" : {
-        "type" : "long"
-      },
       "frequencies" : {
         "properties" : {
           "1k_genomes" : {
@@ -309,85 +374,20 @@
           }
         }
       },
-      "gru_participant_number" : {
-        "type" : "long"
+      "acls" : {
+        "type": "keyword"
       },
-      "hmb_participant_number" : {
+      "external_study_ids" : {
+        "type": "keyword"
+      },
+      "participant_number" : {
         "type" : "long"
       },
       "id" : {
         "type": "keyword"
       },
-      "reference" : {
-        "type": "keyword"
-      },
       "release_id" : {
         "type": "keyword"
-      },
-      "start" : {
-        "type" : "long"
-      },
-      "studies" : {
-        "properties" : {
-          "acls" : {
-            "type": "keyword"
-          },
-          "external_study_ids" : {
-            "type": "keyword"
-          },
-          "frequencies" : {
-            "properties" : {
-              "gru" : {
-                "properties" : {
-                  "ac" : {
-                    "type" : "long"
-                  },
-                  "af" : {
-                    "type" : "float"
-                  },
-                  "an" : {
-                    "type" : "long"
-                  },
-                  "heterozygotes" : {
-                    "type" : "long"
-                  },
-                  "homozygotes" : {
-                    "type" : "long"
-                  }
-                }
-              },
-              "hmb" : {
-                "properties" : {
-                  "ac" : {
-                    "type" : "long"
-                  },
-                  "af" : {
-                    "type" : "float"
-                  },
-                  "an" : {
-                    "type" : "long"
-                  },
-                  "heterozygotes" : {
-                    "type" : "long"
-                  },
-                  "homozygotes" : {
-                    "type" : "long"
-                  }
-                }
-              }
-            }
-          },
-          "gru_participant_number" : {
-            "type" : "long"
-          },
-          "hmb_participant_number" : {
-            "type" : "long"
-          },
-          "study_id" : {
-            "type": "keyword"
-          }
-        },
-        "type": "nested"
       }
     }
   }
