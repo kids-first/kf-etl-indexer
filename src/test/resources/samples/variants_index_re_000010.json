@@ -1,13 +1,256 @@
-{
+[{
   "chromosome": "1",
-  "start": 181205,
+  "start": 813442,
+  "end": 813443,
   "reference": "C",
-  "alternate": "G",
-  "end": 181206,
+  "alternate": "T",
   "studies": [{
+    "study_id": "SD_DYPMEHHF",
+    "acls": ["phs001436.c1"],
+    "external_study_ids": ["phs001436"],
+    "frequencies": {
+      "hmb": {
+        "ac": 0,
+        "an": 0,
+        "af": 0E-10,
+        "homozygotes": 0,
+        "heterozygotes": 0
+      },
+      "gru": {
+        "ac": 2,
+        "an": 4,
+        "af": 0.5000000000,
+        "homozygotes": 0,
+        "heterozygotes": 2
+      }
+    },
+    "participant_number": 2
+  }, {
     "study_id": "SD_BHJXBDQK",
     "acls": ["SD_BHJXBDQK.c1"],
     "external_study_ids": ["SD_BHJXBDQK"],
+    "frequencies": {
+      "hmb": {
+        "ac": 0,
+        "an": 0,
+        "af": 0E-10,
+        "homozygotes": 0,
+        "heterozygotes": 0
+      },
+      "gru": {
+        "ac": 5,
+        "an": 10,
+        "af": 0.5000000000,
+        "homozygotes": 0,
+        "heterozygotes": 5
+      }
+    },
+    "participant_number": 5
+  }, {
+    "study_id": "SD_46SK55A3",
+    "acls": ["phs001110.c1"],
+    "external_study_ids": ["phs001110"],
+    "frequencies": {
+      "hmb": {
+        "ac": 0,
+        "an": 0,
+        "af": 0E-10,
+        "homozygotes": 0,
+        "heterozygotes": 0
+      },
+      "gru": {
+        "ac": 7,
+        "an": 14,
+        "af": 0.5000000000,
+        "homozygotes": 0,
+        "heterozygotes": 7
+      }
+    },
+    "participant_number": 7
+  }],
+  "participant_number": 14,
+  "acls": ["SD_BHJXBDQK.c1", "phs001110.c1", "phs001436.c1"],
+  "external_study_ids": ["phs001110", "SD_BHJXBDQK", "phs001436"],
+  "frequencies": {
+    "1k_genomes": {},
+    "topmed": {
+      "ac": 1007,
+      "an": 125568,
+      "af": 0.00801956,
+      "heterozygotes": 979,
+      "homozygotes": 14
+    },
+    "gnomad_genomes_2_1": {
+      "ac": 197,
+      "an": 31340,
+      "af": 0.006285896617740906,
+      "homozygotes": 4
+    },
+    "gnomad_exomes_2_1": {},
+    "gnomad_genomes_3_0": {
+      "ac": 1069,
+      "an": 143102,
+      "af": 0.007470196083912174,
+      "homozygotes": 14
+    },
+    "internal": {
+      "combined": {
+        "ac": 14,
+        "an": 28,
+        "af": 0.500000000000000000,
+        "homozygotes": 0,
+        "heterozygotes": 14
+      },
+      "hmb": {
+        "ac": 0,
+        "an": 0,
+        "af": 0E-10,
+        "homozygotes": 0,
+        "heterozygotes": 0
+      },
+      "gru": {
+        "ac": 14,
+        "an": 28,
+        "af": 0.5000000000,
+        "homozygotes": 0,
+        "heterozygotes": 14
+      }
+    }
+  },
+  "clinvar": {},
+  "rsnumber": "rs529421770",
+  "release_id": "re_000010",
+  "consequences": [{
+    "biotype": "processed_transcript",
+    "consequences": ["intron_variant", "non_coding_transcript_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.3",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000230021",
+    "ensembl_transcript_id": "ENST00000635509",
+    "variant_class": "SNV",
+    "canonical": false,
+    "intron": {
+      "rank": 1,
+      "total": 3
+    },
+    "strand": -1
+  }, {
+    "biotype": "transcribed_unprocessed_pseudogene",
+    "consequences": ["upstream_gene_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.4",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000230092",
+    "ensembl_transcript_id": "ENST00000590817",
+    "variant_class": "SNV",
+    "canonical": false,
+    "strand": -1
+  }, {
+    "biotype": "lincRNA",
+    "consequences": ["downstream_gene_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.5",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000237491",
+    "ensembl_transcript_id": "ENST00000588951",
+    "variant_class": "SNV",
+    "canonical": false,
+    "strand": 1
+  }, {
+    "biotype": "lincRNA",
+    "consequences": ["downstream_gene_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.5",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000237491",
+    "ensembl_transcript_id": "ENST00000412115",
+    "variant_class": "SNV",
+    "canonical": false,
+    "strand": 1
+  }, {
+    "biotype": "processed_transcript",
+    "consequences": ["intron_variant", "non_coding_transcript_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.4",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000230092",
+    "ensembl_transcript_id": "ENST00000447500",
+    "variant_class": "SNV",
+    "canonical": true,
+    "intron": {
+      "rank": 1,
+      "total": 4
+    },
+    "strand": -1
+  }, {
+    "biotype": "lincRNA",
+    "consequences": ["upstream_gene_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "FAM87B",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000177757",
+    "ensembl_transcript_id": "ENST00000326734",
+    "variant_class": "SNV",
+    "canonical": true,
+    "strand": 1
+  }, {
+    "biotype": "processed_transcript",
+    "consequences": ["intron_variant", "non_coding_transcript_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AL669831.3",
+    "feature_type": "Transcript",
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000230021",
+    "ensembl_transcript_id": "ENST00000634337",
+    "variant_class": "SNV",
+    "canonical": false,
+    "intron": {
+      "rank": 1,
+      "total": 4
+    },
+    "strand": -1
+  }],
+  "symbols": ["FAM87B", "AL669831.3", "AL669831.4", "AL669831.5"],
+  "hgvsg": "chr1:g.813442C>T",
+  "disease_names": []
+}, {
+  "chromosome": "1",
+  "start": 1041001,
+  "end": 1041003,
+  "reference": "GC",
+  "alternate": "G",
+  "studies": [{
+    "study_id": "SD_DYPMEHHF",
+    "acls": ["phs001436.c1"],
+    "external_study_ids": ["phs001436"],
     "frequencies": {
       "hmb": {
         "ac": 0,
@@ -26,9 +269,9 @@
     },
     "participant_number": 1
   }, {
-    "study_id": "SD_DYPMEHHF",
-    "acls": ["phs001436.c1"],
-    "external_study_ids": ["phs001436"],
+    "study_id": "SD_BHJXBDQK",
+    "acls": ["SD_BHJXBDQK.c1"],
+    "external_study_ids": ["SD_BHJXBDQK"],
     "frequencies": {
       "hmb": {
         "ac": 0,
@@ -38,42 +281,42 @@
         "heterozygotes": 0
       },
       "gru": {
-        "ac": 3,
-        "an": 6,
-        "af": 0.5000000000,
-        "homozygotes": 0,
-        "heterozygotes": 3
+        "ac": 2,
+        "an": 2,
+        "af": 1.0000000000,
+        "homozygotes": 1,
+        "heterozygotes": 0
       }
     },
-    "participant_number": 3
+    "participant_number": 1
   }],
-  "participant_number": 4,
+  "participant_number": 2,
   "acls": ["SD_BHJXBDQK.c1", "phs001436.c1"],
   "external_study_ids": ["SD_BHJXBDQK", "phs001436"],
   "frequencies": {
     "1k_genomes": {},
     "topmed": {
-      "ac": 405,
+      "ac": 15,
       "an": 125568,
-      "af": 0.00322534,
-      "heterozygotes": 405,
+      "af": 1.19457E-4,
+      "heterozygotes": 15,
       "homozygotes": 0
     },
     "gnomad_genomes_2_1": {},
     "gnomad_exomes_2_1": {},
     "gnomad_genomes_3_0": {
-      "ac": 29,
-      "an": 88976,
-      "af": 3.2593058802373674E-4,
+      "ac": 3,
+      "an": 103054,
+      "af": 2.9110951539969337E-5,
       "homozygotes": 0
     },
     "internal": {
       "combined": {
-        "ac": 4,
-        "an": 8,
-        "af": 0.500000000000000000,
-        "homozygotes": 0,
-        "heterozygotes": 4
+        "ac": 3,
+        "an": 4,
+        "af": 0.750000000000000000,
+        "homozygotes": 1,
+        "heterozygotes": 1
       },
       "hmb": {
         "ac": 0,
@@ -83,48 +326,237 @@
         "heterozygotes": 0
       },
       "gru": {
-        "ac": 4,
-        "an": 8,
-        "af": 0.5000000000,
-        "homozygotes": 0,
-        "heterozygotes": 4
+        "ac": 3,
+        "an": 4,
+        "af": 0.7500000000,
+        "homozygotes": 1,
+        "heterozygotes": 1
       }
     }
   },
   "clinvar": {},
-  "dbsnp_id": "rs1212647161",
+  "rsnumber": "rs1403597007",
   "release_id": "re_000010",
   "consequences": [{
-    "biotype": "unprocessed_pseudogene",
+    "biotype": "protein_coding",
     "consequences": ["downstream_gene_variant"],
     "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AGRN",
     "feature_type": "Transcript",
-    "hgvsg": "chr1:g.181205C>G",
-    "symbol": "FO538757.1",
+    "omim_gene_id": 103320,
     "scores": {
       "predictions": {},
       "conservations": {}
     },
-    "ensembl_gene_id": "ENSG00000279457",
-    "ensembl_transcript_id": "ENST00000623083",
-    "variant_class": "SNV",
-    "canonical": true,
-    "strand": -1
+    "ensembl_gene_id": "ENSG00000188157",
+    "ensembl_transcript_id": "ENST00000477585",
+    "variant_class": "deletion",
+    "canonical": false,
+    "strand": 1,
+    "entrez_gene_id": 375790
   }, {
-    "biotype": "unprocessed_pseudogene",
+    "biotype": "retained_intron",
     "consequences": ["upstream_gene_variant"],
     "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AGRN",
     "feature_type": "Transcript",
-    "hgvsg": "chr1:g.181205C>G",
-    "symbol": "FO538757.2",
+    "omim_gene_id": 103320,
     "scores": {
       "predictions": {},
       "conservations": {}
     },
-    "ensembl_gene_id": "ENSG00000279928",
-    "ensembl_transcript_id": "ENST00000624431",
-    "variant_class": "SNV",
+    "ensembl_gene_id": "ENSG00000188157",
+    "ensembl_transcript_id": "ENST00000479707",
+    "variant_class": "deletion",
+    "canonical": false,
+    "strand": 1,
+    "entrez_gene_id": 375790
+  }, {
+    "biotype": "protein_coding",
+    "consequences": ["intron_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AGRN",
+    "feature_type": "Transcript",
+    "omim_gene_id": 103320,
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000188157",
+    "ensembl_transcript_id": "ENST00000379370",
+    "variant_class": "deletion",
     "canonical": true,
-    "strand": 1
-  }]
-}
+    "intron": {
+      "rank": 4,
+      "total": 35
+    },
+    "strand": 1,
+    "entrez_gene_id": 375790
+  }, {
+    "biotype": "retained_intron",
+    "consequences": ["intron_variant", "non_coding_transcript_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AGRN",
+    "feature_type": "Transcript",
+    "omim_gene_id": 103320,
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000188157",
+    "ensembl_transcript_id": "ENST00000469403",
+    "variant_class": "deletion",
+    "canonical": false,
+    "intron": {
+      "rank": 2,
+      "total": 2
+    },
+    "strand": 1,
+    "entrez_gene_id": 375790
+  }, {
+    "biotype": "protein_coding",
+    "consequences": ["intron_variant"],
+    "impact": "MODIFIER",
+    "gene_symbol_aa_change": "AGRN",
+    "feature_type": "Transcript",
+    "omim_gene_id": 103320,
+    "scores": {
+      "predictions": {},
+      "conservations": {}
+    },
+    "ensembl_gene_id": "ENSG00000188157",
+    "ensembl_transcript_id": "ENST00000620552",
+    "variant_class": "deletion",
+    "canonical": false,
+    "intron": {
+      "rank": 4,
+      "total": 38
+    },
+    "strand": 1,
+    "entrez_gene_id": 375790
+  }],
+  "symbols": ["AGRN"],
+  "orphanet_disorder_id": 13930,
+  "panel": "Postsynaptic congenital myasthenic syndromes",
+  "inheritance": ["Autosomal recessive"],
+  "hgvsc": "ENST00000620552.4:c.313+122del",
+  "hgvsg": "chr1:g.1041002del",
+  "disease_names": []
+},
+  {
+    "chromosome": "1",
+    "start": 11858709,
+    "end": 11858710,
+    "reference": "C",
+    "alternate": "A",
+    "studies": [{
+      "study_id": "SD_DYPMEHHF",
+      "acls": ["phs001436.c1"],
+      "external_study_ids": ["phs001436"],
+      "frequencies": {
+        "hmb": {
+          "ac": 0,
+          "an": 0,
+          "af": 0E-10,
+          "homozygotes": 0,
+          "heterozygotes": 0
+        },
+        "gru": {
+          "ac": 1,
+          "an": 2,
+          "af": 0.5000000000,
+          "homozygotes": 0,
+          "heterozygotes": 1
+        }
+      },
+      "participant_number": 1
+    }],
+    "participant_number": 1,
+    "acls": ["phs001436.c1"],
+    "external_study_ids": ["phs001436"],
+    "frequencies": {
+      "1k_genomes": {},
+      "topmed": {},
+      "gnomad_genomes_2_1": {},
+      "gnomad_exomes_2_1": {},
+      "gnomad_genomes_3_0": {},
+      "internal": {
+        "combined": {
+          "ac": 1,
+          "an": 2,
+          "af": 0.500000000000000000,
+          "homozygotes": 0,
+          "heterozygotes": 1
+        },
+        "hmb": {
+          "ac": 0,
+          "an": 0,
+          "af": 0E-10,
+          "homozygotes": 0,
+          "heterozygotes": 0
+        },
+        "gru": {
+          "ac": 1,
+          "an": 2,
+          "af": 0.5000000000,
+          "homozygotes": 0,
+          "heterozygotes": 1
+        }
+      }
+    },
+    "clinvar": {},
+    "release_id": "re_000010",
+    "consequences": [{
+      "biotype": "protein_coding",
+      "aa_change": "G42V",
+      "cds_position": 125,
+      "consequences": ["missense_variant"],
+      "impact": "MODERATE",
+      "gene_symbol_aa_change": "NPPB G42V",
+      "amino_acids": {
+        "reference": "G",
+        "variant": "V"
+      },
+      "feature_type": "Transcript",
+      "coding_dna_change": "125C>A",
+      "exon": {
+        "rank": 1,
+        "total": 3
+      },
+      "scores": {
+        "predictions": {
+          "sift_converted_rank_score": 0.36509,
+          "sift_pred": "T",
+          "polyphen2_hvar_score": 0.40966,
+          "polyphen2_hvar_pred": "B",
+          "FATHMM_converted_rankscore": 0.26737,
+          "fathmm_pred": "T",
+          "cadd_score": 0.12019,
+          "dann_score": 0.38647,
+          "revel_rankscore": 0.12596,
+          "lrt_converted_rankscore": 0.04156,
+          "lrt_pred": "N"
+        },
+        "conservations": {
+          "phylo_p17way_primate_rankscore": 0.11096
+        }
+      },
+      "ensembl_gene_id": "ENSG00000120937",
+      "ensembl_transcript_id": "ENST00000376468",
+      "variant_class": "SNV",
+      "canonical": true,
+      "protein_position": 42,
+      "strand": -1,
+      "codons": {
+        "reference": "gGg",
+        "variant": "gTg"
+      },
+      "cdna_position": 223
+    }],
+    "symbols": ["NPPB"],
+    "hgvsc": "ENST00000376468.3:c.125G>T",
+    "hgvsp": "ENSP00000365651.3:p.Gly42Val",
+    "hgvsg": "chr1:g.11858709C>A",
+    "disease_names": []
+  }
+]
