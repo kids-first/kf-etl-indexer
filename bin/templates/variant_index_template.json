@@ -108,6 +108,9 @@
           "impact": {
             "type": "keyword"
           },
+          "impact_score": {
+            "type": "long"
+          },
           "intron": {
             "properties": {
               "rank": {
