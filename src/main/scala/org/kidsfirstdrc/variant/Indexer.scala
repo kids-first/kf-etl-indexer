@@ -27,11 +27,15 @@ object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, indexName, release, templateFileName) = args
+  val Array(input, esNodes, indexName, release, templateFileName, jobType) = args
 
-  def run(df: DataFrame, indexName: String): Unit = {
+  val ES_config =
+    Map("es.mapping.id" -> "id", "es.write.operation"-> jobType)
+
+  def run(df: DataFrame, indexName: String)(implicit spark: SparkSession): Unit = {
     import spark.implicits._
 
+    //creates the columns `id` if the column doesn't already exists.
     val dfWithId =
       df.columns.find(_.equals("id")).fold {
         df.withColumn("id", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
@@ -39,7 +43,7 @@ object Indexer extends App {
         df
       }
 
-    dfWithId.saveToEs(s"$indexName/_doc", Map("es.mapping.id" -> "id"))
+    dfWithId.saveToEs(s"$indexName/_doc", ES_config)
   }
 
   val esClient = new ElasticSearchClient(esNodes.split(',').head)
