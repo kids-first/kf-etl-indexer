@@ -4,10 +4,11 @@ input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variants_index_re_0000
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_index"}
 es_index_template=${5:-"variant_index_template.json"}
-jarV=${6:-"7.9.1"}
-number_instance=${7:-"5"}
-instance_type=${8:-"r5.4xlarge"}
-env=${9:-"dev"}
+es_job_type=${6:-"upsert"} # one of: index, update, upsert or create
+jarV=${7:-"7.9.1"}
+number_instance=${8:-"5"}
+instance_type=${9:-"r5.4xlarge"}
+env=${10:-"dev"}
 
 aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
@@ -38,7 +39,8 @@ steps=$(cat <<EOF
       "${es_nodes}",
       "${es_index_name}",
       "${release_id}",
-      "${es_index_template}"
+      "${es_index_template}",
+      "${es_job_type}"
     ],
     "Type": "CUSTOM_JAR",
     "ActionOnFailure": "TERMINATE_CLUSTER",
