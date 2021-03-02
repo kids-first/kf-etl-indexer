@@ -51,8 +51,8 @@ object Indexer extends App {
     println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
     println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
 
-    val respDelete = esClient.deleteIndex(s"${indexName}_$release")
-    println(s"DELETE INDEX[${indexName}_$release] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+    //val respDelete = esClient.deleteIndex(s"${indexName}_$release")
+    //println(s"DELETE INDEX[${indexName}_$release] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
   }
   val response = esClient.setTemplate(s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName")
   println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
