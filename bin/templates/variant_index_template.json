@@ -361,7 +361,7 @@
       "hgvsp": {
         "type": "keyword"
       },
-      "id": {
+      "hash": {
         "type": "keyword"
       },
       "inheritances": {
