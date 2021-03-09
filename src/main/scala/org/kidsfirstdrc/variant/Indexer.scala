@@ -30,15 +30,15 @@ object Indexer extends App {
   val Array(input, esNodes, indexName, release, templateFileName, jobType) = args
 
   val ES_config =
-    Map("es.mapping.id" -> "id", "es.write.operation"-> jobType)
+    Map("es.mapping.id" -> "hash", "es.write.operation"-> jobType)
 
   def run(df: DataFrame, indexName: String)(implicit spark: SparkSession): Unit = {
     import spark.implicits._
 
-    //creates the columns `id` if the column doesn't already exists.
+    //creates the columns `hash` if the column doesn't already exists.
     val dfWithId =
-      df.columns.find(_.equals("id")).fold {
-        df.withColumn("id", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
+      df.columns.find(_.equals("hash")).fold {
+        df.withColumn("hash", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
       }{_ =>
         df
       }
