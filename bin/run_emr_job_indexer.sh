@@ -7,7 +7,7 @@ es_index_template=${5:-"variant_index_template.json"}
 es_job_type=${6:-"upsert"} # one of: index, update, upsert or create
 jarV=${7:-"7.9.1"}
 number_instance=${8:-"5"}
-instance_type=${9:-"r5.4xlarge"}
+instance_type=${9:-"m5.xlarge"}
 env=${10:-"dev"}
 
 aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
