@@ -2,8 +2,8 @@
 release_id=${1:-"re_000010"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variants_index_re_000010/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
-es_index_name=${4:-"variant_index"}
-es_index_template=${5:-"variant_index_template.json"}
+es_index_name=${4:-"variant_centric"}
+es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"upsert"} # one of: index, update, upsert or create
 jarV=${7:-"7.9.1"}
 number_instance=${8:-"5"}
