@@ -1,5 +1,5 @@
 {
-  "index_patterns": ["variant_index*"],
+  "index_patterns": ["variant_centric*"],
   "settings": {
     "number_of_shards": 40
   },
