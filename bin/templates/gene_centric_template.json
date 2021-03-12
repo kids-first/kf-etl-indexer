@@ -1,0 +1,97 @@
+{
+  "index_patterns": ["gene_centric*"],
+  "settings": {
+    "number_of_shards": 5
+  },
+  "mappings": {
+    "properties" : {
+      "genes" : {
+        "properties" : {
+          "alias" : {
+            "type" : "keyword"
+          },
+          "biotype" : {
+            "type" : "keyword"
+          },
+          "cosmic" : {
+            "properties" : {
+              "tumour_types_germline" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "ddd" : {
+            "properties" : {
+              "disease_name" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "ensembl_gene_id" : {
+            "type" : "keyword"
+          },
+          "entrez_gene_id" : {
+            "type" : "long"
+          },
+          "hgnc" : {
+            "type" : "keyword"
+          },
+          "hpo" : {
+            "properties" : {
+              "hpo_term_id" : {
+                "type" : "keyword"
+              },
+              "hpo_term_label" : {
+                "type" : "keyword"
+              },
+              "hpo_term_name" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "location" : {
+            "type" : "keyword"
+          },
+          "name" : {
+            "type" : "keyword"
+          },
+          "omim" : {
+            "properties" : {
+              "inheritance" : {
+                "type" : "keyword"
+              },
+              "name" : {
+                "type" : "keyword"
+              },
+              "omim_id" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "omim_gene_id" : {
+            "type" : "keyword"
+          },
+          "orphanet" : {
+            "properties" : {
+              "disorder_id" : {
+                "type" : "long"
+              },
+              "inheritance" : {
+                "type" : "keyword"
+              },
+              "panel" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "symbol" : {
+            "type" : "keyword"
+          }
+        }
+      },
+      "hash" : {
+        "type" : "keyword"
+      }
+    }
+  }
+}
