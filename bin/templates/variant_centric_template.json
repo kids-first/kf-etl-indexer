@@ -30,9 +30,6 @@
           },
           "interpretations" : {
             "type" : "keyword"
-          },
-          "name" : {
-            "type" : "keyword"
           }
         }
       },
@@ -109,19 +106,10 @@
           "feature_type" : {
             "type" : "keyword"
           },
-          "gene_symbol_aa_change" : {
-            "type" : "keyword"
-          },
           "hgvsc" : {
             "type" : "keyword"
           },
-          "hgvsg" : {
-            "type" : "keyword"
-          },
           "hgvsp" : {
-            "type" : "keyword"
-          },
-          "impact" : {
             "type" : "keyword"
           },
           "impact_score" : {
@@ -183,54 +171,6 @@
           "protein_position" : {
             "type" : "long"
           },
-          "scores" : {
-            "properties" : {
-              "conservations" : {
-                "properties" : {
-                  "phylo_p17way_primate_rankscore" : {
-                    "type" : "float"
-                  }
-                }
-              },
-              "predictions" : {
-                "properties" : {
-                  "FATHMM_converted_rankscore" : {
-                    "type" : "float"
-                  },
-                  "cadd_score" : {
-                    "type" : "float"
-                  },
-                  "dann_score" : {
-                    "type" : "float"
-                  },
-                  "fathmm_pred" : {
-                    "type" : "keyword"
-                  },
-                  "lrt_converted_rankscore" : {
-                    "type" : "float"
-                  },
-                  "lrt_pred" : {
-                    "type" : "keyword"
-                  },
-                  "polyphen2_hvar_pred" : {
-                    "type" : "keyword"
-                  },
-                  "polyphen2_hvar_score" : {
-                    "type" : "float"
-                  },
-                  "revel_rankscore" : {
-                    "type" : "float"
-                  },
-                  "sift_converted_rank_score" : {
-                    "type" : "float"
-                  },
-                  "sift_pred" : {
-                    "type" : "keyword"
-                  }
-                }
-              }
-            }
-          },
           "strand" : {
             "type" : "long"
           },
@@ -245,27 +185,12 @@
           }
         }
       },
-      "dbsnp_id" : {
-        "type" : "keyword"
-      },
-      "disease_names" : {
-        "type" : "keyword"
-      },
       "end" : {
         "type" : "long"
       },
-      "ensembl_gene_ids" : {
-        "type" : "keyword"
-      },
-      "entrez_gene_ids" : {
-        "type" : "long"
-      },
-      "external_study_ids" : {
-        "type" : "keyword"
-      },
       "frequencies" : {
         "properties" : {
-          "1k_genomes" : {
+          "one_thousand_genomes" : {
             "properties" : {
               "ac" : {
                 "type" : "long"
@@ -495,31 +420,13 @@
       "hash" : {
         "type" : "keyword"
       },
-      "hgvsc" : {
-        "type" : "keyword"
-      },
       "hgvsg" : {
-        "type" : "keyword"
-      },
-      "hgvsp" : {
-        "type" : "keyword"
-      },
-      "inheritances" : {
         "type" : "keyword"
       },
       "locus" : {
         "type" : "keyword"
       },
       "omim" : {
-        "type" : "keyword"
-      },
-      "omim_gene_ids" : {
-        "type" : "long"
-      },
-      "orphanet_disorder_ids" : {
-        "type" : "long"
-      },
-      "panels" : {
         "type" : "keyword"
       },
       "participant_number" : {
@@ -595,12 +502,6 @@
             "type" : "keyword"
           }
         }
-      },
-      "symbols" : {
-        "type" : "keyword"
-      },
-      "tumour_types_germlines" : {
-        "type" : "keyword"
       }
     }
   }
