@@ -1,7 +1,6 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.spark.sql.functions._
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.SparkSession
 import org.elasticsearch.spark.sql._
 
 import scala.util.Try
@@ -27,35 +26,23 @@ object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, indexName, release, templateFileName, jobType) = args
+  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId) = args
 
   val ES_config =
-    Map("es.mapping.id" -> "hash", "es.write.operation"-> jobType)
-
-  def run(df: DataFrame, indexName: String)(implicit spark: SparkSession): Unit = {
-    import spark.implicits._
-
-    //creates the columns `hash` if the column doesn't already exists.
-    val dfWithId =
-      df.columns.find(_.equals("hash")).fold {
-        df.withColumn("hash", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
-      }{_ =>
-        df
-      }
-
-    dfWithId.saveToEs(s"$indexName/_doc", ES_config)
-  }
+    Map("es.mapping.id" -> columnId, "es.write.operation"-> jobType)
 
   val esClient = new ElasticSearchClient(esNodes.split(',').head)
-  Try {
-    println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
-    println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
+  if (jobType == "index") {
+    Try {
+      println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
+      println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
 
-    val respDelete = esClient.deleteIndex(s"${indexName}_$release")
-    println(s"DELETE INDEX[${indexName}_$release] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+      val respDelete = esClient.deleteIndex(s"${indexName}_$release")
+      println(s"DELETE INDEX[${indexName}_$release] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+    }
   }
   val response = esClient.setTemplate(s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName")
   println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-  run(spark.read.json(input), s"${indexName}_$release")
 
+  spark.read.json(input).saveToEs(s"${indexName}_$release/_doc", ES_config)
 }
