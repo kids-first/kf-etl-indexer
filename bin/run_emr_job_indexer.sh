@@ -1,9 +1,9 @@
 #!/bin/bash
 release_id=${1:-"re_000010"}
-input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variants_index_re_000010/"}
+input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/gene_centric/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
-es_index_name=${4:-"variant_centric"}
-es_index_template=${5:-"variant_centric_template.json"}
+es_index_name=${4:-"gene_centric"}
+es_index_template=${5:-"gene_centric_template.json"}
 es_job_type=${6:-"upsert"} # one of: index, update, upsert or create
 jarV=${7:-"7.9.1"}
 number_instance=${8:-"5"}
@@ -62,7 +62,7 @@ aws emr create-cluster --applications Name=Hadoop Name=Spark \
 --release-label emr-5.32.0 \
 --log-uri 's3n://kf-strides-variant-parquet-prd/jobs/elasticmapreduce/' \
 --steps "${steps}" \
---name "Variant index to ES7 ${release_id}" \
+--name "${es_index_name} index to ES7 ${release_id}" \
 --instance-groups "${instance_groups}" \
 --scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
 --auto-terminate \
