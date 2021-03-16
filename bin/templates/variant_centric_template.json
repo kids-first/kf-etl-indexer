@@ -9,7 +9,8 @@
         "type" : "keyword"
       },
       "alternate" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "chromosome" : {
         "type" : "keyword"
@@ -85,10 +86,12 @@
             }
           },
           "ensembl_gene_id" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "ensembl_transcript_id" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "entrez_gene_id" : {
             "type" : "long"
@@ -175,7 +178,8 @@
             "type" : "long"
           },
           "symbol" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "variant_class" : {
             "type" : "keyword"
@@ -186,7 +190,8 @@
         }
       },
       "end" : {
-        "type" : "long"
+        "type" : "long",
+        "index": false
       },
       "frequencies" : {
         "properties" : {
@@ -336,7 +341,8 @@
       "genes" : {
         "properties" : {
           "alias" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "biotype" : {
             "type" : "keyword"
@@ -359,10 +365,12 @@
             "type" : "keyword"
           },
           "entrez_gene_id" : {
-            "type" : "long"
+            "type" : "long",
+            "index": false
           },
           "hgnc" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "hpo" : {
             "properties" : {
@@ -378,10 +386,12 @@
             }
           },
           "location" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "name" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "omim" : {
             "properties" : {
@@ -397,7 +407,8 @@
             }
           },
           "omim_gene_id" : {
-            "type" : "keyword"
+            "type" : "keyword",
+            "index": false
           },
           "orphanet" : {
             "properties" : {
@@ -421,10 +432,12 @@
         "type" : "keyword"
       },
       "hgvsg" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "locus" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "omim" : {
         "type" : "keyword"
@@ -433,13 +446,16 @@
         "type" : "long"
       },
       "reference" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "release_id" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "rsnumber" : {
-        "type" : "keyword"
+        "type" : "keyword",
+        "index": false
       },
       "start" : {
         "type" : "long"

@@ -1,0 +1,47 @@
+{
+  "index_patterns": ["suggester*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "suggest": {
+        "type": "completion",
+        "analyzer": "standard"
+      },
+      "type": {
+        "type": "keyword",
+        "index": false
+      },
+      "hash": {
+        "type": "keyword",
+        "index": false
+      },
+      "locus": {
+        "type": "keyword",
+        "index": false
+      },
+      "suggestion_id": {
+        "type": "keyword",
+        "index": false
+      },
+      "hgvsg": {
+        "type": "keyword",
+        "index": false
+      },
+      "consequences": {
+        "type": "nested",
+        "properties": {
+          "aa_change": {
+            "type": "keyword",
+            "index": false
+          },
+          "symbol": {
+            "type": "keyword",
+            "index": false
+          }
+        }
+      }
+    }
+  }
+}
