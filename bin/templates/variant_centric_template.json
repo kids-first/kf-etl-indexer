@@ -189,10 +189,6 @@
           }
         }
       },
-      "end" : {
-        "type" : "long",
-        "index": false
-      },
       "frequencies" : {
         "properties" : {
           "one_thousand_genomes" : {
@@ -344,9 +340,6 @@
             "type" : "keyword",
             "index": false
           },
-          "biotype" : {
-            "type" : "keyword"
-          },
           "cosmic" : {
             "properties" : {
               "tumour_types_germline" : {
@@ -439,9 +432,6 @@
         "type" : "keyword",
         "index": false
       },
-      "omim" : {
-        "type" : "keyword"
-      },
       "participant_number" : {
         "type" : "long"
       },
@@ -456,6 +446,15 @@
       "rsnumber" : {
         "type" : "keyword",
         "index": false
+      },
+      "participants" : {
+        "type" : "nested",
+        "properties" : {
+          "id": {
+            "type": "keyword",
+            "index": false
+          }
+        }
       },
       "start" : {
         "type" : "long"
