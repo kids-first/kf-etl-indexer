@@ -1,5 +1,5 @@
 {
-  "index_patterns": ["suggester*"],
+  "index_patterns": ["genomic_suggestions*"],
   "settings": {
     "number_of_shards": 5
   },
@@ -10,10 +10,6 @@
         "analyzer": "standard"
       },
       "type": {
-        "type": "keyword",
-        "index": false
-      },
-      "hash": {
         "type": "keyword",
         "index": false
       },
