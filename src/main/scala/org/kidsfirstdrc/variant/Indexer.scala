@@ -33,26 +33,33 @@ object Indexer extends App {
     Map("es.mapping.id" -> columnId, "es.write.operation"-> jobType)
 
   val esClient = new ElasticSearchClient(esNodes.split(',').head)
-  if (jobType == "index") {
+
+  chromosome match {
+    case "all" =>
+      val index = s"${indexName}_$release".toLowerCase
+      if (jobType == "index") setupIndex(index)
+      spark.read.json(input)
+        .repartition(200)
+        .saveToEs(s"$index/_doc", ES_config)
+
+    case s: String =>
+      val index = s"${indexName}_${s}_$release".toLowerCase
+      if (jobType == "index") setupIndex(index)
+      spark.read.json(input)
+        .where(col("chromosome") === s)
+        .repartition(200)
+        .saveToEs(s"$index/_doc", ES_config)
+  }
+
+  def setupIndex(indexName: String): Unit = {
     Try {
       println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
       println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
 
-      val respDelete = esClient.deleteIndex(s"${indexName}_$release")
-      println(s"DELETE INDEX[${indexName}_$release] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
+      val respDelete = esClient.deleteIndex(indexName)
+      println(s"DELETE INDEX[$indexName] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
     }
     val response = esClient.setTemplate(s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName")
     println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-
   }
-
-  chromosome match {
-    case "all" => spark.read.json(input).saveToEs(s"${indexName}_$release/_doc", ES_config)
-    case s: String =>
-      spark.read.json(input)
-        .where(col("chromosome") === s)
-        .saveToEs(s"${indexName}_${s}_$release/_doc", ES_config)
-  }
-
-
 }
