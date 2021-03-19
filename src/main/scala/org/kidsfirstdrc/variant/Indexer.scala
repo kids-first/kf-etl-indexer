@@ -1,7 +1,8 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Encoders, SparkSession}
 import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.types.StructType
 import org.elasticsearch.spark.sql._
 
 import scala.util.Try
@@ -34,18 +35,28 @@ object Indexer extends App {
 
   val esClient = new ElasticSearchClient(esNodes.split(',').head)
 
+  val schemaFor: PartialFunction[String, StructType] = {
+    case "variant_centric" => Encoders.product[VariantCentricOutput.Output].schema
+    case "genomic_suggestions" => Encoders.product[GenomicSuggestionsOutput].schema
+    case "gene_centric" => Encoders.product[GenomicSuggestionsOutput].schema
+  }
+
   chromosome match {
     case "all" =>
       val index = s"${indexName}_$release".toLowerCase
       if (jobType == "index") setupIndex(index)
-      spark.read.json(input)
+      spark.read
+        .schema(schemaFor(indexName))
+        .json(input)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
 
-    case s: String =>
-      val index = s"${indexName}_${s}_$release".toLowerCase
+    case s =>
+      val index = s"${indexName}_${release}_${s}".toLowerCase
       if (jobType == "index") setupIndex(index)
-      spark.read.json(input)
+      spark.read
+        .schema(schemaFor(indexName))
+        .json(input)
         .where(col("chromosome") === s)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
