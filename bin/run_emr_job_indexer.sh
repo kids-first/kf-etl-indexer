@@ -1,15 +1,16 @@
 #!/bin/bash
 release_id=${1:-"re_000010"}
-input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variants_index_re_000010/"}
+input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variant_centric_re_000010/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_centric"}
 es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
 column_id=${7:-"hash"} #id, uid, hash
-jarV=${8:-"7.9.1"}
-number_instance=${9:-"5"}
-instance_type=${10:-"m5.xlarge"}
-env=${11:-"dev"}
+chromosome=${8:-"X"} #all, 1, 2, 3, ..., X, Y
+jarV=${9:-"7.9.1"}
+number_instance=${10:-"5"}
+instance_type=${11:-"m5.xlarge"}
+env=${12:-"dev"}
 
 aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
@@ -42,7 +43,8 @@ steps=$(cat <<EOF
       "${release_id}",
       "${es_index_template}",
       "${es_job_type}",
-      "${column_id}"
+      "${column_id}",
+      "${chromosome}"
     ],
     "Type": "CUSTOM_JAR",
     "ActionOnFailure": "TERMINATE_CLUSTER",
@@ -64,7 +66,7 @@ aws emr create-cluster --applications Name=Hadoop Name=Spark \
 --release-label emr-5.32.0 \
 --log-uri 's3n://kf-strides-variant-parquet-prd/jobs/elasticmapreduce/' \
 --steps "${steps}" \
---name "${es_index_name} index to ES7 ${release_id}" \
+--name "${es_index_name}_${chromosome} index to ES7 ${release_id}" \
 --instance-groups "${instance_groups}" \
 --scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
 --auto-terminate \

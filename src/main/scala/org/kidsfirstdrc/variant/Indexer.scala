@@ -1,6 +1,7 @@
 package org.kidsfirstdrc.variant
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.col
 import org.elasticsearch.spark.sql._
 
 import scala.util.Try
@@ -26,7 +27,7 @@ object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId) = args
+  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId, chromosome) = args
 
   val ES_config =
     Map("es.mapping.id" -> columnId, "es.write.operation"-> jobType)
@@ -45,5 +46,13 @@ object Indexer extends App {
 
   }
 
-  spark.read.json(input).saveToEs(s"${indexName}_$release/_doc", ES_config)
+  chromosome match {
+    case "all" => spark.read.json(input).saveToEs(s"${indexName}_$release/_doc", ES_config)
+    case s: String =>
+      spark.read.json(input)
+        .where(col("chromosome") === s)
+        .saveToEs(s"${indexName}_${s}_$release/_doc", ES_config)
+  }
+
+
 }
