@@ -1,7 +1,7 @@
 {
   "index_patterns": ["variant_centric*"],
   "settings": {
-    "number_of_shards": 40
+    "number_of_shards": 50
   },
   "mappings": {
     "properties" : {
@@ -10,7 +10,7 @@
       },
       "alternate" : {
         "type" : "keyword",
-        "index": false
+        "index" : false
       },
       "chromosome" : {
         "type" : "keyword"
@@ -87,11 +87,11 @@
           },
           "ensembl_gene_id" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "ensembl_transcript_id" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "entrez_gene_id" : {
             "type" : "long"
@@ -179,7 +179,7 @@
           },
           "symbol" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "variant_class" : {
             "type" : "keyword"
@@ -189,21 +189,11 @@
           }
         }
       },
+      "external_study_ids" : {
+        "type" : "keyword"
+      },
       "frequencies" : {
         "properties" : {
-          "one_thousand_genomes" : {
-            "properties" : {
-              "ac" : {
-                "type" : "long"
-              },
-              "af" : {
-                "type" : "float"
-              },
-              "an" : {
-                "type" : "long"
-              }
-            }
-          },
           "gnomad_exomes_2_1" : {
             "properties" : {
               "ac" : {
@@ -313,6 +303,19 @@
               }
             }
           },
+          "one_thousand_genomes" : {
+            "properties" : {
+              "ac" : {
+                "type" : "long"
+              },
+              "af" : {
+                "type" : "float"
+              },
+              "an" : {
+                "type" : "long"
+              }
+            }
+          },
           "topmed" : {
             "properties" : {
               "ac" : {
@@ -338,7 +341,7 @@
         "properties" : {
           "alias" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "cosmic" : {
             "properties" : {
@@ -359,11 +362,11 @@
           },
           "entrez_gene_id" : {
             "type" : "long",
-            "index": false
+            "index" : false
           },
           "hgnc" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "hpo" : {
             "properties" : {
@@ -380,11 +383,11 @@
           },
           "location" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "name" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "omim" : {
             "properties" : {
@@ -401,7 +404,7 @@
           },
           "omim_gene_id" : {
             "type" : "keyword",
-            "index": false
+            "index" : false
           },
           "orphanet" : {
             "properties" : {
@@ -426,35 +429,35 @@
       },
       "hgvsg" : {
         "type" : "keyword",
-        "index": false
+        "index" : false
       },
       "locus" : {
         "type" : "keyword",
-        "index": false
+        "index" : false
       },
       "participant_number" : {
         "type" : "long"
       },
-      "reference" : {
-        "type" : "keyword",
-        "index": false
-      },
-      "release_id" : {
-        "type" : "keyword",
-        "index": false
-      },
-      "rsnumber" : {
-        "type" : "keyword",
-        "index": false
-      },
       "participants" : {
         "type" : "nested",
         "properties" : {
-          "id": {
-            "type": "keyword",
-            "index": false
+          "participant_id" : {
+            "type" : "keyword",
+            "index" : false
           }
         }
+      },
+      "reference" : {
+        "type" : "keyword",
+        "index" : false
+      },
+      "release_id" : {
+        "type" : "keyword",
+        "index" : false
+      },
+      "rsnumber" : {
+        "type" : "keyword",
+        "index" : false
       },
       "start" : {
         "type" : "long"
