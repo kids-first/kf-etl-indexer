@@ -6,9 +6,9 @@ es_index_name=${4:-"variant_centric"}
 es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
 column_id=${7:-"hash"} #id, uid, hash
-chromosome=${8:-"2"} #all, 1, 2, 3, ..., X, Y
+chromosome=${8:-"X"} #all, 1, 2, 3, ..., X, Y
 jarV=${9:-"7.9.1"}
-number_instance=${10:-"20"}
+number_instance=${10:-"10"}
 instance_type=${11:-"m5.xlarge"}
 env=${12:-"dev"}
 

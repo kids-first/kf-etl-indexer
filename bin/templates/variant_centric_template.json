@@ -438,14 +438,9 @@
       "participant_number" : {
         "type" : "long"
       },
-      "participants" : {
-        "type" : "nested",
-        "properties" : {
-          "participant_id" : {
-            "type" : "keyword",
-            "index" : false
-          }
-        }
+      "participant_ids" : {
+        "type" : "keyword",
+        "index" : false
       },
       "reference" : {
         "type" : "keyword",
