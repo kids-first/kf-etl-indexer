@@ -338,12 +338,14 @@
         }
       },
       "genes" : {
+        "type" : "nested",
         "properties" : {
           "alias" : {
             "type" : "keyword",
             "index" : false
           },
           "cosmic" : {
+            "type" : "nested",
             "properties" : {
               "tumour_types_germline" : {
                 "type" : "keyword"
@@ -351,6 +353,7 @@
             }
           },
           "ddd" : {
+            "type" : "nested",
             "properties" : {
               "disease_name" : {
                 "type" : "keyword"
@@ -369,6 +372,7 @@
             "index" : false
           },
           "hpo" : {
+            "type" : "nested",
             "properties" : {
               "hpo_term_id" : {
                 "type" : "keyword"
@@ -390,6 +394,7 @@
             "index" : false
           },
           "omim" : {
+            "type" : "nested",
             "properties" : {
               "inheritance" : {
                 "type" : "keyword"
@@ -407,6 +412,7 @@
             "index" : false
           },
           "orphanet" : {
+            "type" : "nested",
             "properties" : {
               "disorder_id" : {
                 "type" : "long"
