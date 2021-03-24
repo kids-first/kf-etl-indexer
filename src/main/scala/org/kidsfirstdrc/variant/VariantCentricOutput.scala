@@ -120,7 +120,7 @@ object VariantCentricOutput {
                     `consequences`: List[Consequence] = List(),
                     `hgvsg`: Option[String] = Some("chr2:g.166166916G>A"), //index false
                     `genes`: List[GENES] = List(GENES()),
-                    `participants`: List[PARTICIPANT] = List(PARTICIPANT()))
+                    `participant_ids`: List[String] = List("PT_000003"))
 
 }
 
