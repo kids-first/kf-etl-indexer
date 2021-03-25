@@ -24,6 +24,10 @@
       "hgvsg": {
         "type": "keyword",
         "index": false
+      },
+      "symbol": {
+        "type": "keyword",
+        "index": false
       }
     }
   }
