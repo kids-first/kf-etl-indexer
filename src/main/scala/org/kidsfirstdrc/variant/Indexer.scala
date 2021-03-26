@@ -38,7 +38,7 @@ object Indexer extends App {
   val schemaFor: PartialFunction[String, StructType] = {
     case "variant_centric" => Encoders.product[VariantCentricOutput.Output].schema
     case "genomic_suggestions" => Encoders.product[GenomicSuggestionsOutput].schema
-    case "gene_centric" => Encoders.product[GenomicSuggestionsOutput].schema
+    case "gene_centric" => Encoders.product[GeneCentricOutput].schema
   }
 
   chromosome match {
