@@ -54,12 +54,15 @@ object Indexer extends App {
     case s =>
       val index = s"${indexName}_${release}_${s}".toLowerCase
       if (jobType == "index") setupIndex(index)
-      spark.read
-        .schema(schemaFor(indexName))
+      val df = spark.read
+        //.schema(schemaFor(indexName))
         .json(input)
         .where(col("chromosome") === s)
         .repartition(200)
-        .saveToEs(s"$index/_doc", ES_config)
+        .persist()
+      df.select("variant_class").show(false)
+
+        df.saveToEs(s"$index/_doc", ES_config)
   }
 
   def setupIndex(indexName: String): Unit = {

@@ -1,0 +1,209 @@
+{
+  "_index" : "variant_centric_re_000010_y",
+  "_type" : "_doc",
+  "_id" : "35b17961c51aed1e4b88465b10843fae011f1c60",
+  "_version" : 1,
+  "_seq_no" : 60362,
+  "_primary_term" : 1,
+  "found" : true,
+  "_source" : {
+    "hash" : "35b17961c51aed1e4b88465b10843fae011f1c60",
+    "start" : 12755958,
+    "reference" : "TG",
+    "alternate" : "T",
+    "locus" : "Y-12755958-TG-T",
+    "variant_class" : "deletion",
+    "studies" : [
+      {
+        "study_id" : "SD_BHJXBDQK",
+        "acls" : [
+          "SD_BHJXBDQK.c1"
+        ],
+        "external_study_ids" : [
+          "SD_BHJXBDQK"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 2,
+            "ac" : 1,
+            "af" : 0.5,
+            "homozygotes" : 0,
+            "heterozygotes" : 1
+          }
+        },
+        "participant_number" : 1
+      }
+    ],
+    "participant_number" : 1,
+    "acls" : [
+      "SD_BHJXBDQK.c1"
+    ],
+    "external_study_ids" : [
+      "SD_BHJXBDQK"
+    ],
+    "frequencies" : {
+      "one_thousand_genomes" : { },
+      "topmed" : { },
+      "gnomad_genomes_2_1" : { },
+      "gnomad_exomes_2_1" : { },
+      "gnomad_genomes_3_0" : {
+        "ac" : 0,
+        "an" : 30704,
+        "af" : 0.0,
+        "homozygotes" : 0
+      },
+      "internal" : {
+        "combined" : {
+          "an" : 2,
+          "ac" : 1,
+          "af" : 0.5,
+          "homozygotes" : 0,
+          "heterozygotes" : 1
+        },
+        "hmb" : {
+          "an" : 0,
+          "ac" : 0,
+          "af" : 0.0,
+          "homozygotes" : 0,
+          "heterozygotes" : 0
+        },
+        "gru" : {
+          "an" : 2,
+          "ac" : 1,
+          "af" : 0.5,
+          "homozygotes" : 0,
+          "heterozygotes" : 1
+        }
+      }
+    },
+    "release_id" : "re_000010",
+    "consequences" : [
+      {
+        "vep_impact" : "MODIFIER",
+        "symbol" : "USP9Y",
+        "ensembl_transcript_id" : "ENST00000338981",
+        "hgvsc" : "ENST00000338981.7:c.1423-1227del",
+        "feature_type" : "Transcript",
+        "consequences" : [
+          "intron_variant"
+        ],
+        "biotype" : "protein_coding",
+        "strand" : 1,
+        "intron" : {
+          "rank" : 12,
+          "total" : 45
+        },
+        "impact_score" : 1,
+        "canonical" : true,
+        "conservations" : { },
+        "predictions" : { }
+      },
+      {
+        "vep_impact" : "MODIFIER",
+        "symbol" : "USP9Y",
+        "ensembl_transcript_id" : "ENST00000426564",
+        "hgvsc" : "ENST00000426564.6:n.1435-1227del",
+        "feature_type" : "Transcript",
+        "consequences" : [
+          "intron_variant",
+          "non_coding_transcript_variant"
+        ],
+        "biotype" : "processed_transcript",
+        "strand" : 1,
+        "intron" : {
+          "rank" : 10,
+          "total" : 43
+        },
+        "impact_score" : 1,
+        "canonical" : false,
+        "conservations" : { },
+        "predictions" : { }
+      }
+    ],
+    "hgvsg" : "chrY:g.12755965del",
+    "genes" : [
+      {
+        "symbol" : "USP9Y",
+        "entrez_gene_id" : 8287,
+        "omim_gene_id" : "400005",
+        "hgnc" : "HGNC:12633",
+        "ensembl_gene_id" : "ENSG00000114374",
+        "location" : "Yq11.221",
+        "name" : "ubiquitin specific peptidase 9 Y-linked",
+        "alias" : [
+          "DFFRY",
+          "SPGFY2"
+        ],
+        "orphanet" : [
+          {
+            "disorder_id" : 257,
+            "panel" : "Partial chromosome Y deletion",
+            "inheritance" : [
+              "Not applicable",
+              "Y-linked"
+            ]
+          }
+        ],
+        "hpo" : [
+          {
+            "hpo_term_id" : "HP:0000028",
+            "hpo_term_name" : "Cryptorchidism",
+            "hpo_term_label" : "Cryptorchidism (HP:0000028)"
+          },
+          {
+            "hpo_term_id" : "HP:0003251",
+            "hpo_term_name" : "Male infertility",
+            "hpo_term_label" : "Male infertility (HP:0003251)"
+          },
+          {
+            "hpo_term_id" : "HP:0000027",
+            "hpo_term_name" : "Azoospermia",
+            "hpo_term_label" : "Azoospermia (HP:0000027)"
+          },
+          {
+            "hpo_term_id" : "HP:0008734",
+            "hpo_term_name" : "Decreased testicular size",
+            "hpo_term_label" : "Decreased testicular size (HP:0008734)"
+          },
+          {
+            "hpo_term_id" : "HP:0011961",
+            "hpo_term_name" : "Non-obstructive azoospermia",
+            "hpo_term_label" : "Non-obstructive azoospermia (HP:0011961)"
+          },
+          {
+            "hpo_term_id" : "HP:0000798",
+            "hpo_term_name" : "Oligospermia",
+            "hpo_term_label" : "Oligospermia (HP:0000798)"
+          },
+          {
+            "hpo_term_id" : "HP:0001450",
+            "hpo_term_name" : "Y-linked inheritance",
+            "hpo_term_label" : "Y-linked inheritance (HP:0001450)"
+          }
+        ],
+        "omim" : [
+          {
+            "name" : "Spermatogenic failure, Y-linked, 2",
+            "omim_id" : "415000",
+            "inheritance" : [
+              "YL"
+            ]
+          }
+        ],
+        "ddd" : [ ],
+        "cosmic" : [ ]
+      }
+    ],
+    "participant_ids" : [
+      "PT_N32BYY8A"
+    ],
+    "chromosome" : "Y"
+  }
+}
