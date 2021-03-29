@@ -181,9 +181,6 @@
             "type" : "keyword",
             "index" : false
           },
-          "variant_class" : {
-            "type" : "keyword"
-          },
           "vep_impact" : {
             "type" : "keyword"
           }
@@ -440,6 +437,9 @@
       "locus" : {
         "type" : "keyword",
         "index" : false
+      },
+      "variant_class" : {
+        "type" : "keyword"
       },
       "participant_number" : {
         "type" : "long"
