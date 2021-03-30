@@ -1,0 +1,667 @@
+{
+  "_index" : "variant_centric_re_000010_22",
+  "_type" : "_doc",
+  "_id" : "55e306127d01b75d48646f17209f589f0deeb655",
+  "_version" : 1,
+  "_seq_no" : 9489,
+  "_primary_term" : 1,
+  "found" : true,
+  "_source" : {
+    "hash" : "55e306127d01b75d48646f17209f589f0deeb655",
+    "start" : 45600418,
+    "reference" : "A",
+    "alternate" : "G",
+    "locus" : "22-45600418-A-G",
+    "variant_class" : "SNV",
+    "studies" : [
+      {
+        "study_id" : "SD_46SK55A3",
+        "acls" : [
+          "phs001110.c1"
+        ],
+        "external_study_ids" : [
+          "phs001110"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 120,
+            "ac" : 61,
+            "af" : 0.5083333333,
+            "homozygotes" : 1,
+            "heterozygotes" : 59
+          }
+        },
+        "participant_number" : 60
+      },
+      {
+        "study_id" : "SD_NMVV8A1Y",
+        "acls" : [
+          "phs002162.c1"
+        ],
+        "external_study_ids" : [
+          "phs002162"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 12,
+            "ac" : 6,
+            "af" : 0.5,
+            "homozygotes" : 0,
+            "heterozygotes" : 6
+          }
+        },
+        "participant_number" : 6
+      },
+      {
+        "study_id" : "SD_7NQ9151J",
+        "acls" : [
+          "phs001987.c1"
+        ],
+        "external_study_ids" : [
+          "phs001987"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          }
+        },
+        "participant_number" : 0
+      },
+      {
+        "study_id" : "SD_BHJXBDQK",
+        "acls" : [
+          "SD_BHJXBDQK.c1"
+        ],
+        "external_study_ids" : [
+          "SD_BHJXBDQK"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 58,
+            "ac" : 29,
+            "af" : 0.5,
+            "homozygotes" : 0,
+            "heterozygotes" : 29
+          }
+        },
+        "participant_number" : 29
+      },
+      {
+        "study_id" : "SD_DYPMEHHF",
+        "acls" : [
+          "phs001436.c1"
+        ],
+        "external_study_ids" : [
+          "phs001436"
+        ],
+        "frequencies" : {
+          "hmb" : {
+            "an" : 0,
+            "ac" : 0,
+            "af" : 0.0,
+            "homozygotes" : 0,
+            "heterozygotes" : 0
+          },
+          "gru" : {
+            "an" : 114,
+            "ac" : 57,
+            "af" : 0.5,
+            "homozygotes" : 0,
+            "heterozygotes" : 57
+          }
+        },
+        "participant_number" : 57
+      }
+    ],
+    "participant_number" : 152,
+    "acls" : [
+      "SD_BHJXBDQK.c1",
+      "phs001110.c1",
+      "phs001436.c1",
+      "phs001987.c1",
+      "phs002162.c1"
+    ],
+    "external_study_ids" : [
+      "phs001110",
+      "SD_BHJXBDQK",
+      "phs002162",
+      "phs001987",
+      "phs001436"
+    ],
+    "frequencies" : {
+      "one_thousand_genomes" : { },
+      "topmed" : {
+        "an" : 125568,
+        "ac" : 1865,
+        "af" : 0.0148525,
+        "homozygotes" : 23,
+        "heterozygotes" : 1819
+      },
+      "gnomad_genomes_2_1" : {
+        "ac" : 648,
+        "an" : 31390,
+        "af" : 0.020643517043644474,
+        "homozygotes" : 9
+      },
+      "gnomad_exomes_2_1" : {
+        "ac" : 4230,
+        "an" : 251480,
+        "af" : 0.016820423095275965,
+        "homozygotes" : 53
+      },
+      "gnomad_genomes_3_0" : {
+        "ac" : 2519,
+        "an" : 143290,
+        "af" : 0.017579733407774443,
+        "homozygotes" : 35
+      },
+      "internal" : {
+        "combined" : {
+          "an" : 304,
+          "ac" : 153,
+          "af" : 0.5032894736842105,
+          "homozygotes" : 1,
+          "heterozygotes" : 151
+        },
+        "hmb" : {
+          "an" : 0,
+          "ac" : 0,
+          "af" : 0.0,
+          "homozygotes" : 0,
+          "heterozygotes" : 0
+        },
+        "gru" : {
+          "an" : 304,
+          "ac" : 153,
+          "af" : 0.5032894737,
+          "homozygotes" : 1,
+          "heterozygotes" : 151
+        }
+      }
+    },
+    "clinvar" : {
+      "clinvar_id" : "597782",
+      "clin_sig" : [
+        "Benign"
+      ],
+      "conditions" : [
+        "not specified"
+      ],
+      "inheritance" : [
+        "germline"
+      ],
+      "interpretations" : [
+        "",
+        "Benign"
+      ]
+    },
+    "rsnumber" : "rs13268",
+    "release_id" : "re_000010",
+    "consequences" : [
+      {
+        "vep_impact" : "MODIFIER",
+        "symbol" : "LINC01589",
+        "ensembl_transcript_id" : "ENST00000422971",
+        "feature_type" : "Transcript",
+        "consequences" : [
+          "downstream_gene_variant"
+        ],
+        "biotype" : "antisense",
+        "strand" : -1,
+        "impact_score" : 1,
+        "canonical" : true,
+        "conservations" : { },
+        "predictions" : { }
+      },
+      {
+        "vep_impact" : "MODERATE",
+        "symbol" : "FBLN1",
+        "ensembl_transcript_id" : "ENST00000327858",
+        "hgvsc" : "ENST00000327858.10:c.2084A>G",
+        "hgvsp" : "ENSP00000331544.6:p.His695Arg",
+        "feature_type" : "Transcript",
+        "consequences" : [
+          "missense_variant"
+        ],
+        "biotype" : "protein_coding",
+        "strand" : 1,
+        "exon" : {
+          "rank" : 17,
+          "total" : 17
+        },
+        "cdna_position" : 2179,
+        "cds_position" : 2084,
+        "amino_acids" : {
+          "reference" : "H",
+          "variant" : "R"
+        },
+        "codons" : {
+          "reference" : "cAc",
+          "variant" : "cGc"
+        },
+        "protein_position" : 695,
+        "aa_change" : "H695R",
+        "coding_dna_change" : "2084A>G",
+        "impact_score" : 3,
+        "canonical" : true,
+        "conservations" : {
+          "phylo_p17way_primate_rankscore" : 0.84096
+        },
+        "predictions" : {
+          "sift_converted_rank_score" : 0.30943,
+          "sift_pred" : "T",
+          "polyphen2_hvar_score" : 0.57244,
+          "polyphen2_hvar_pred" : "P",
+          "FATHMM_converted_rankscore" : "0.82985",
+          "fathmm_pred" : "D",
+          "cadd_score" : "0.71052",
+          "dann_score" : "0.81283",
+          "revel_rankscore" : 0.88212,
+          "lrt_converted_rankscore" : 0.8433,
+          "lrt_pred" : "D"
+        }
+      }
+    ],
+    "hgvsg" : "chr22:g.45600418A>G",
+    "genes" : [
+      {
+        "symbol" : "FBLN1",
+        "entrez_gene_id" : 2192,
+        "omim_gene_id" : "135820",
+        "hgnc" : "HGNC:3600",
+        "ensembl_gene_id" : "ENSG00000077942",
+        "location" : "22q13.31",
+        "name" : "fibulin 1",
+        "alias" : [
+          "FBLN",
+          "FIBL1"
+        ],
+        "orphanet" : [
+          {
+            "disorder_id" : 22922,
+            "panel" : "FBLN1-related developmental delay-central nervous system anomaly-syndactyly syndrome",
+            "inheritance" : [
+              "Autosomal recessive"
+            ]
+          },
+          {
+            "disorder_id" : 21044,
+            "panel" : "Synpolydactyly type 2"
+          }
+        ],
+        "hpo" : [
+          {
+            "hpo_term_id" : "HP:0010442",
+            "hpo_term_name" : "Polydactyly",
+            "hpo_term_label" : "Polydactyly (HP:0010442)"
+          },
+          {
+            "hpo_term_id" : "HP:0000006",
+            "hpo_term_name" : "Autosomal dominant inheritance",
+            "hpo_term_label" : "Autosomal dominant inheritance (HP:0000006)"
+          },
+          {
+            "hpo_term_id" : "HP:0009701",
+            "hpo_term_name" : "Metacarpal synostosis",
+            "hpo_term_label" : "Metacarpal synostosis (HP:0009701)"
+          },
+          {
+            "hpo_term_id" : "HP:0009702",
+            "hpo_term_name" : "Carpal synostosis",
+            "hpo_term_label" : "Carpal synostosis (HP:0009702)"
+          },
+          {
+            "hpo_term_id" : "HP:0001770",
+            "hpo_term_name" : "Toe syndactyly",
+            "hpo_term_label" : "Toe syndactyly (HP:0001770)"
+          },
+          {
+            "hpo_term_id" : "HP:0008368",
+            "hpo_term_name" : "Tarsal synostosis",
+            "hpo_term_label" : "Tarsal synostosis (HP:0008368)"
+          },
+          {
+            "hpo_term_id" : "HP:0001440",
+            "hpo_term_name" : "Metatarsal synostosis",
+            "hpo_term_label" : "Metatarsal synostosis (HP:0001440)"
+          }
+        ],
+        "omim" : [
+          {
+            "name" : "Synpolydactyly, 3/3'4, associated with metacarpal and metatarsal synostoses",
+            "omim_id" : "608180",
+            "inheritance" : [
+              "AD"
+            ]
+          }
+        ],
+        "ddd" : [
+          {
+            "disease_name" : "SYNPOLYDACTYLY, 3/3-PRIME/4, ASSOCIATED WITH METACARPAL AND METATARSAL SYNOSTOSES"
+          }
+        ],
+        "cosmic" : [ ]
+      },
+      {
+        "symbol" : "LINC01589",
+        "entrez_gene_id" : 100506737,
+        "hgnc" : "HGNC:51520",
+        "ensembl_gene_id" : "ENSG00000238120",
+        "location" : "22q13.31",
+        "name" : "long intergenic non-protein coding RNA 1589",
+        "alias" : [
+          "TCONS_00029353"
+        ],
+        "orphanet" : [ ],
+        "hpo" : [ ],
+        "omim" : [ ],
+        "ddd" : [ ],
+        "cosmic" : [ ]
+      }
+    ],
+    "participant_ids" : [
+      "PT_NJZZY6QD",
+      "PT_6HDXJ208",
+      "PT_YFT0BXQ3",
+      "PT_VWGE6P6F",
+      "PT_H8KE5M81",
+      "PT_F5CXZ31Q",
+      "PT_GGP3GW8Z",
+      "PT_07BWG2HB",
+      "PT_Z3EW8XWP",
+      "PT_0VW0A9KH",
+      "PT_Q0CM1QQG",
+      "PT_M3WDA0RH",
+      "PT_PJC0J6BS",
+      "PT_QMEWPSA6",
+      "PT_QFQ3TTRG",
+      "PT_4TF06G45",
+      "PT_7R9YXZCT",
+      "PT_VKJK8FDG",
+      "PT_E7PFZT6E",
+      "PT_8MTPWVJ9",
+      "PT_5HQ4M0AM",
+      "PT_0WKX8Q5X",
+      "PT_V3BXBVVV",
+      "PT_EXQBE1V3",
+      "PT_K57NXZ4V",
+      "PT_VZTTTP3Q",
+      "PT_8A55A38J",
+      "PT_JRK1KMEE",
+      "PT_7E0CX56S",
+      "PT_FKMVR5E4",
+      "PT_78NQ0QQS",
+      "PT_AVX6JC92",
+      "PT_EEGYPWPP",
+      "PT_VA8GM98Z",
+      "PT_T976WDKH",
+      "PT_CZ592107",
+      "PT_7KHX7EHX",
+      "PT_NSNQWG4K",
+      "PT_NGP92ARA",
+      "PT_DR1E8ZVX",
+      "PT_DKKK1FS4",
+      "PT_TJWQRQ0J",
+      "PT_PVVVQWAV",
+      "PT_PKDQNSEH",
+      "PT_SNQATD85",
+      "PT_0HEWCXYQ",
+      "PT_V13MR1CN",
+      "PT_9XX7Z134",
+      "PT_VAEZQ8V9",
+      "PT_QT4V57B7",
+      "PT_58J0PB4V",
+      "PT_XC173D4J",
+      "PT_1FTVGPD5",
+      "PT_J3670DEW",
+      "PT_ZEADQ67P",
+      "PT_H0HWHRPB",
+      "PT_5CNZ47XV",
+      "PT_VY45XTT7",
+      "PT_AS8MF4E0",
+      "PT_1AA85GTN",
+      "PT_PXQZ594N",
+      "PT_BZY9XTWS",
+      "PT_A393N9CD",
+      "PT_FEF3V44F",
+      "PT_P9J1JZ8N",
+      "PT_SV8ETF29",
+      "PT_DY6QG8QC",
+      "PT_ZB8PKA6P",
+      "PT_EZQXS1FS",
+      "PT_5YS6XQSE",
+      "PT_RT5KWY0W",
+      "PT_H59D6FVR",
+      "PT_FA4AYWYF",
+      "PT_1JB74YM0",
+      "PT_GS8DC2DJ",
+      "PT_R1A7F22G",
+      "PT_N52DNK4D",
+      "PT_AMGGG6JQ",
+      "PT_JK05PV56",
+      "PT_BXHPZNYR",
+      "PT_8BT011R6",
+      "PT_V9K74824",
+      "PT_S4A0R1PM",
+      "PT_TS401XM2",
+      "PT_GPQJYAW4",
+      "PT_497XETYW",
+      "PT_CMHR896E",
+      "PT_2JZNQGTR",
+      "PT_JE78NHCV",
+      "PT_6WE8JADD",
+      "PT_7GDE7ER9",
+      "PT_GMM5AQ24",
+      "PT_71Z7CJZA",
+      "PT_Q3BE4B28",
+      "PT_TYZD6QE9",
+      "PT_MPPP513A",
+      "PT_KEC3KQFE",
+      "PT_DEYCW197",
+      "PT_38E17RX2",
+      "PT_82D2FJV2",
+      "PT_MA8GMYM8",
+      "PT_WB9F7EP6",
+      "PT_0NXVQX3A",
+      "PT_9M1HYDVP",
+      "PT_HQ89KPKT",
+      "PT_XJETDSNS",
+      "PT_T9NBRY9P",
+      "PT_RH7JV51D",
+      "PT_3D5D6MKY",
+      "PT_0GNASEE4",
+      "PT_YS31MFW0",
+      "PT_XEX4MQ74",
+      "PT_CDV1X2VC",
+      "PT_9R5Y63KX",
+      "PT_XTWGYHFB",
+      "PT_9KB3ESTZ",
+      "PT_R94AWQPJ",
+      "PT_K0EWNQ6J",
+      "PT_ES0MDKKZ",
+      "PT_N8QY96HZ",
+      "PT_A49Q9KA3",
+      "PT_VMWQSQE7",
+      "PT_ZRQQC2S9",
+      "PT_0R7YV23K",
+      "PT_M0AP3Z15",
+      "PT_20HA9N47",
+      "PT_S7CQAWSN",
+      "PT_WSND1RSF",
+      "PT_JD7GF43A",
+      "PT_XDRPDXHN",
+      "PT_0Z7A0MAJ",
+      "PT_NJDX7MY9",
+      "PT_QH98APNQ",
+      "PT_JSP73CEM",
+      "PT_Z5H6VC47",
+      "PT_6VJD1DSE",
+      "PT_VB6ZZXVH",
+      "PT_X8SK8120",
+      "PT_MKVWPWS6",
+      "PT_X0DWAHYQ",
+      "PT_ADPKPFJP",
+      "PT_AVBKS0NA",
+      "PT_M5HDHQNQ",
+      "PT_GR8P8NY5",
+      "PT_M1EYT7M1",
+      "PT_YB7J9AJC",
+      "PT_CW414ZS6",
+      "PT_R63WZN2Z",
+      "PT_8PY5FN2E",
+      "PT_5A33V8QY",
+      "PT_0KYT44CP",
+      "PT_D4AZXYBD",
+      "PT_S87VB06C",
+      "PT_XDV8W16W",
+      "PT_Y4329N56",
+      "PT_SC88G57H",
+      "PT_M5DS088E",
+      "PT_1BV6ND1D",
+      "PT_E2G29YRE",
+      "PT_G3T55FD2",
+      "PT_8W36H7P5",
+      "PT_9HCXHFCR",
+      "PT_QMJRV1WF",
+      "PT_GZB204S5",
+      "PT_343DA0DH",
+      "PT_DVD8WJR1",
+      "PT_ZZQ34QRZ",
+      "PT_VBVZ2NAR",
+      "PT_RH6XBBVP",
+      "PT_7MZRW1DH",
+      "PT_VSF7JZV1",
+      "PT_8M9TRJX8",
+      "PT_6PBAZAKJ",
+      "PT_CEH8MNW9",
+      "PT_7GR64XJZ",
+      "PT_GSBGKSZH",
+      "PT_89KAFG3G",
+      "PT_E14PAR8V",
+      "PT_YHES26F6",
+      "PT_0KX8RBX4",
+      "PT_NXJ9JN5Q",
+      "PT_EXZSSRGH",
+      "PT_KGQT337D",
+      "PT_KEQ53KRH",
+      "PT_VJ0M4E8Y",
+      "PT_GPXSEC8A",
+      "PT_CACVFQGK",
+      "PT_2BJF83GQ",
+      "PT_YR9A0A9N",
+      "PT_K8ECPXXB",
+      "PT_RG7MMHFF",
+      "PT_Q2DHFEZK",
+      "PT_TDW8MMWH",
+      "PT_XV9Z2P56",
+      "PT_VT1YWZ6T",
+      "PT_SRZ2TC37",
+      "PT_DRTS2X8Z",
+      "PT_5FCYBT0S",
+      "PT_BQQ827KG",
+      "PT_GN1WF9KM",
+      "PT_EVT8NS4J",
+      "PT_E4175CEB",
+      "PT_25JR0XW5",
+      "PT_HS4P27SE",
+      "PT_NN8YS8A9",
+      "PT_PJG7ZP8J",
+      "PT_TWDDDEK1",
+      "PT_DEKWG1QG",
+      "PT_5JH49QGE",
+      "PT_66A2AE7W",
+      "PT_F2HB8VAG",
+      "PT_AYDJYMNE",
+      "PT_WMW6A2ZS",
+      "PT_1SX7SRK9",
+      "PT_JFEC17DE",
+      "PT_79GGW1VF",
+      "PT_SK63H1SX",
+      "PT_G845328B",
+      "PT_HCKATD98",
+      "PT_SHPCV882",
+      "PT_BDM0M83S",
+      "PT_NV1C4DBC",
+      "PT_JY86Z5KM",
+      "PT_7K4J4EZP",
+      "PT_KMM07BFZ",
+      "PT_2V7B1K20",
+      "PT_Z6Q9BFWH",
+      "PT_CVMYG1Y5",
+      "PT_W6NSXFM5",
+      "PT_MJGW6TCM",
+      "PT_DF5HTHKA",
+      "PT_BV44R33B",
+      "PT_HC1QFR28",
+      "PT_W8RA5AGN",
+      "PT_T819TH63",
+      "PT_CCM0BST2",
+      "PT_9YMRNZHH",
+      "PT_NZFFMZ0B",
+      "PT_ART6DAKP",
+      "PT_D9XF79J4",
+      "PT_KKY996D7",
+      "PT_3EYQCWJC",
+      "PT_E6EAQ73A",
+      "PT_JJNNFK89",
+      "PT_F99EHTJ3",
+      "PT_NQ59GSZH",
+      "PT_E3R0MRXN",
+      "PT_N7K3EK9X",
+      "PT_0GBSGBM6",
+      "PT_JYRSHSWJ",
+      "PT_6Y967HZ5",
+      "PT_8TZ60RYP",
+      "PT_89D6BFGP",
+      "PT_6AKAZHGG",
+      "PT_NV1230XP",
+      "PT_FP9P2AD1",
+      "PT_11Q51PKJ",
+      "PT_TZ9F9B1G",
+      "PT_E6FTW238",
+      "PT_CXVDF0G9",
+      "PT_5V6BK0YF",
+      "PT_0WMP712K",
+      "PT_BWR2NCZ2",
+      "PT_HQ550NC9",
+      "PT_RD7BDG5Q",
+      "PT_ZQM33DJ9",
+      "PT_WH96B6MK",
+      "PT_VR5VMN0P",
+      "PT_W6AVZF18"
+    ],
+    "chromosome" : "22"
+  }
+}

@@ -46,7 +46,7 @@ object Indexer extends App {
       val index = s"${indexName}_$release".toLowerCase
       if (jobType == "index") setupIndex(index)
       spark.read
-        .schema(schemaFor(indexName))
+        //.schema(schemaFor(indexName))
         .json(input)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
@@ -55,7 +55,7 @@ object Indexer extends App {
       val index = s"${indexName}_${release}_${s}".toLowerCase
       if (jobType == "index") setupIndex(index)
       spark.read
-        .schema(schemaFor(indexName))
+        //.schema(schemaFor(indexName))
         .json(input)
         .where(col("chromosome") === s)
         .repartition(200)
