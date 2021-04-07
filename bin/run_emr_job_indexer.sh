@@ -1,12 +1,12 @@
 #!/bin/bash
 release_id=${1:-"re_000010"}
-input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variant_centric_re_000010/"}
+input=${2:-"s3a://kf-strides-variant-parquet-prd/es_index/variant_centric_re_000010_filtered/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_centric"}
 es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
 column_id=${7:-"hash"} #id, uid, hash
-chromosome=${8:-"22"} #all, 1, 2, 3, ..., X, Y
+chromosome=${8:-"Y"} #all, 1, 2, 3, ..., X, Y
 jarV=${9:-"7.9.1"}
 number_instance=${10:-"10"}
 instance_type=${11:-"m5.xlarge"}

@@ -5,6 +5,10 @@
   },
   "mappings": {
     "properties" : {
+      "genome_build" : {
+        "type" : "keyword",
+        "index" : false
+      },
       "acls" : {
         "type" : "keyword"
       },
@@ -136,37 +140,46 @@
           },
           "predictions" : {
             "properties" : {
-              "FATHMM_converted_rankscore" : {
+              "sift_converted_rankscore" : {
                 "type" : "float"
               },
-              "cadd_score" : {
+              "sift_score" : {
                 "type" : "float"
               },
-              "dann_score" : {
+              "sift_pred" : {
+                "type" : "keyword"
+              },
+              "polyphen2_hvar_rankscore" : {
+                "type" : "float"
+              },
+              "polyphen2_hvar_score" : {
+                "type" : "float"
+              },
+              "polyphen2_hvar_pred" : {
+                "type" : "keyword"
+              },
+              "fathmm_converted_rankscore" : {
                 "type" : "float"
               },
               "fathmm_pred" : {
                 "type" : "keyword"
               },
-              "lrt_converted_rankscore" : {
+              "cadd_rankscore" : {
                 "type" : "float"
               },
-              "lrt_pred" : {
-                "type" : "keyword"
+              "dann_rankscore" : {
+                "type" : "float"
               },
-              "polyphen2_hvar_pred" : {
-                "type" : "keyword"
-              },
-              "polyphen2_hvar_score" : {
+              "dann_score" : {
                 "type" : "float"
               },
               "revel_rankscore" : {
                 "type" : "float"
               },
-              "sift_converted_rank_score" : {
+              "lrt_converted_rankscore" : {
                 "type" : "float"
               },
-              "sift_pred" : {
+              "lrt_pred" : {
                 "type" : "keyword"
               }
             }
@@ -241,7 +254,7 @@
           },
           "internal" : {
             "properties" : {
-              "combined" : {
+              "upper_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -260,26 +273,7 @@
                   }
                 }
               },
-              "gru" : {
-                "properties" : {
-                  "ac" : {
-                    "type" : "long"
-                  },
-                  "af" : {
-                    "type" : "float"
-                  },
-                  "an" : {
-                    "type" : "long"
-                  },
-                  "heterozygotes" : {
-                    "type" : "long"
-                  },
-                  "homozygotes" : {
-                    "type" : "long"
-                  }
-                }
-              },
-              "hmb" : {
+              "lower_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -474,7 +468,7 @@
           },
           "frequencies" : {
             "properties" : {
-              "gru" : {
+              "upper_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -493,7 +487,7 @@
                   }
                 }
               },
-              "hmb" : {
+              "lower_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
