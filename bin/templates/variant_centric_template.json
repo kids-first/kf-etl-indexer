@@ -3,12 +3,8 @@
   "settings": {
     "number_of_shards": 10
   },
-  "mappings": {
+  "mappings" : {
     "properties" : {
-      "genome_build" : {
-        "type" : "keyword",
-        "index" : false
-      },
       "acls" : {
         "type" : "keyword"
       },
@@ -140,30 +136,6 @@
           },
           "predictions" : {
             "properties" : {
-              "sift_converted_rankscore" : {
-                "type" : "float"
-              },
-              "sift_score" : {
-                "type" : "float"
-              },
-              "sift_pred" : {
-                "type" : "keyword"
-              },
-              "polyphen2_hvar_rankscore" : {
-                "type" : "float"
-              },
-              "polyphen2_hvar_score" : {
-                "type" : "float"
-              },
-              "polyphen2_hvar_pred" : {
-                "type" : "keyword"
-              },
-              "fathmm_converted_rankscore" : {
-                "type" : "float"
-              },
-              "fathmm_pred" : {
-                "type" : "keyword"
-              },
               "cadd_rankscore" : {
                 "type" : "float"
               },
@@ -173,14 +145,38 @@
               "dann_score" : {
                 "type" : "float"
               },
-              "revel_rankscore" : {
+              "fathmm_converted_rankscore" : {
                 "type" : "float"
+              },
+              "fathmm_pred" : {
+                "type" : "keyword"
               },
               "lrt_converted_rankscore" : {
                 "type" : "float"
               },
               "lrt_pred" : {
                 "type" : "keyword"
+              },
+              "polyphen2_hvar_pred" : {
+                "type" : "keyword"
+              },
+              "polyphen2_hvar_rankscore" : {
+                "type" : "float"
+              },
+              "polyphen2_hvar_score" : {
+                "type" : "float"
+              },
+              "revel_rankscore" : {
+                "type" : "float"
+              },
+              "sift_converted_rankscore" : {
+                "type" : "float"
+              },
+              "sift_pred" : {
+                "type" : "keyword"
+              },
+              "sift_score" : {
+                "type" : "float"
               }
             }
           },
@@ -254,7 +250,7 @@
           },
           "internal" : {
             "properties" : {
-              "upper_bound_kf" : {
+              "lower_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -273,7 +269,7 @@
                   }
                 }
               },
-              "lower_bound_kf" : {
+              "upper_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -421,6 +417,10 @@
           }
         }
       },
+      "genome_build" : {
+        "type" : "keyword",
+        "index" : false
+      },
       "hash" : {
         "type" : "keyword"
       },
@@ -428,19 +428,19 @@
         "type" : "keyword",
         "index" : false
       },
+      "impact_score" : {
+        "type" : "long"
+      },
       "locus" : {
         "type" : "keyword",
         "index" : false
       },
-      "variant_class" : {
-        "type" : "keyword"
-      },
-      "participant_number" : {
-        "type" : "long"
-      },
       "participant_ids" : {
         "type" : "keyword",
         "index" : false
+      },
+      "participant_number" : {
+        "type" : "long"
       },
       "reference" : {
         "type" : "keyword",
@@ -468,7 +468,7 @@
           },
           "frequencies" : {
             "properties" : {
-              "upper_bound_kf" : {
+              "lower_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -487,7 +487,7 @@
                   }
                 }
               },
-              "lower_bound_kf" : {
+              "upper_bound_kf" : {
                 "properties" : {
                   "ac" : {
                     "type" : "long"
@@ -515,6 +515,9 @@
             "type" : "keyword"
           }
         }
+      },
+      "variant_class" : {
+        "type" : "keyword"
       }
     }
   }
