@@ -2,17 +2,18 @@
 release_id=${1:-"re_000010"}
 input=${2:-"s3a://kf-strides-variant-parquet-prd/portal/es_index/variant_centric_re_000010/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
+#es_nodes=${3:-"https://vpc-kf-arranger-blue-es-prd-4gbc2zkvm5uttysiqkcbzwxqeu.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_centric"}
 es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
-column_id=${7:-"hash"} #id, uid, hash
-chromosome=${8:-"17"} #all, 1, 2, 3, ..., X, Y
+column_id=${7:-"hash"} #id, suggestion_id, hash
+chromosome=${8:-"y"} #all, 1, 2, 3, ..., X, Y
 jarV=${9:-"7.9.1"}
 number_instance=${10:-"10"}
 instance_type=${11:-"m5.xlarge"}
 env=${12:-"dev"}
 
-# aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
+#aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
 # default is dev vpc-05be68d35774905e8
 subnetId="subnet-0f822f9f9ff99871a"
@@ -66,7 +67,7 @@ aws emr create-cluster --applications Name=Hadoop Name=Spark \
 --release-label emr-5.32.0 \
 --log-uri 's3n://kf-strides-variant-parquet-prd/jobs/elasticmapreduce/' \
 --steps "${steps}" \
---name "${es_index_name}_${chromosome} index to ES7 ${release_id}" \
+--name "${es_index_name}_${chromosome} index to ES7 ${release_id} - ${env}" \
 --instance-groups "${instance_groups}" \
 --scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
 --auto-terminate \

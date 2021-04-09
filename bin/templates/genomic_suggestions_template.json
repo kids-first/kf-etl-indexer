@@ -28,6 +28,14 @@
       "symbol": {
         "type": "keyword",
         "index": false
+      },
+      "rsnumber": {
+        "type": "keyword",
+        "index": false
+      },
+      "chromosome": {
+        "type": "keyword",
+        "index": false
       }
     }
   }
