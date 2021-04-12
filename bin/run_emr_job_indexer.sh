@@ -1,17 +1,18 @@
 #!/bin/bash
 release_id=${1:-"re_000010"}
-input=${2:-"s3a://kf-strides-variant-parquet-prd/portal/es_index/variant_centric_re_000010/"}
+input=${2:-"s3a://kf-strides-variant-parquet-prd/portal/es_index/variant_centric_re_000010_parquet/"}
 es_nodes=${3:-"https://vpc-kf-arranger-blue-es-service-exwupkrf4dyupg24dnfmvzcwri.us-east-1.es.amazonaws.com:443"}
 #es_nodes=${3:-"https://vpc-kf-arranger-blue-es-prd-4gbc2zkvm5uttysiqkcbzwxqeu.us-east-1.es.amazonaws.com:443"}
 es_index_name=${4:-"variant_centric"}
 es_index_template=${5:-"variant_centric_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
 column_id=${7:-"hash"} #id, suggestion_id, hash
-chromosome=${8:-"y"} #all, 1, 2, 3, ..., X, Y
+chromosome=${8:-"3"} #all, 1, 2, 3, ..., X, Y
 jarV=${9:-"7.9.1"}
 number_instance=${10:-"10"}
 instance_type=${11:-"m5.xlarge"}
 env=${12:-"dev"}
+format=${13:-"parquet"}
 
 #aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
@@ -45,7 +46,8 @@ steps=$(cat <<EOF
       "${es_index_template}",
       "${es_job_type}",
       "${column_id}",
-      "${chromosome}"
+      "${chromosome}",
+      "${format}"
     ],
     "Type": "CUSTOM_JAR",
     "ActionOnFailure": "TERMINATE_CLUSTER",

@@ -27,7 +27,7 @@ object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId, chromosome) = args
+  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId, chromosome, format) = args
 
   val ES_config =
     Map("es.mapping.id" -> columnId, "es.write.operation"-> jobType)
@@ -39,7 +39,8 @@ object Indexer extends App {
       val index = s"${indexName}_$release".toLowerCase
       if (jobType == "index") setupIndex(index)
       spark.read
-        .json(input)
+        .format(format)
+        .load(input)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
 
@@ -47,7 +48,8 @@ object Indexer extends App {
       val index = s"${indexName}_${release}_${s}".toLowerCase
       if (jobType == "index") setupIndex(index)
       spark.read
-        .json(input)
+        .format(format)
+        .load(input)
         .where(col("chromosome") === s)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
