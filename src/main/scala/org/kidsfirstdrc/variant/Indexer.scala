@@ -44,6 +44,8 @@ object Indexer extends App {
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
 
+      Try(esClient.setAlias(index, indexName))
+
     case s =>
       val index = s"${indexName}_${release}_${s}".toLowerCase
       if (jobType == "index") setupIndex(index)
@@ -53,7 +55,11 @@ object Indexer extends App {
         .where(col("chromosome") === s)
         .repartition(200)
         .saveToEs(s"$index/_doc", ES_config)
+
+      Try(esClient.setAlias(index, indexName))
   }
+
+
 
   def setupIndex(indexName: String): Unit = {
     Try {

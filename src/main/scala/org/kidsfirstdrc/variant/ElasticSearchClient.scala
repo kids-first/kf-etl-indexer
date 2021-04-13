@@ -67,6 +67,40 @@ class ElasticSearchClient(url: String) {
   }
 
   /**
+   * Set alias
+   * @param indexName name of the name to add to the alias
+   * @param aliasName name of the alias to update
+   * @return the http response sent by ElasticSearch
+   */
+  def setAlias(indexName: String, aliasName: String)(implicit spark: SparkSession): HttpResponse = {
+
+    val requestUrl = s"$url/_aliases"
+
+    println(s"UPDATING ALIAS: ADD ${indexName} to $aliasName")
+
+    val body =
+      s"""
+        |{
+        |	"actions": [{
+        |		"add": {
+        |			"index": "$indexName",
+        |			"alias": "$aliasName"
+        |		}
+        |	}]
+        |}
+        |""".stripMargin
+
+    val request = new HttpPut(requestUrl)
+    request.addHeader(HttpHeaders.CONTENT_TYPE,"application/json")
+    request.setEntity(new StringEntity(body))
+    val response = new DefaultHttpClient().execute(request)
+    val status = response.getStatusLine
+    if (!status.getStatusCode.equals(200))
+      throw new Exception(s"Server could not add [$indexName] to $aliasName and replied :${status.getStatusCode + " : " + status.getReasonPhrase}")
+    response
+  }
+
+  /**
    * Delete a template
    * @param templateName name of the template to delete
    * @return the http response sent by ElasticSearch
