@@ -435,12 +435,17 @@
         "type" : "keyword",
         "index" : false
       },
-      "participant_ids" : {
-        "type" : "keyword",
-        "index" : false
-      },
       "participant_number" : {
         "type" : "long"
+      },
+      "participant_number_visible" : {
+        "type" : "long"
+      },
+      "participant_total_number" : {
+        "type" : "long"
+      },
+      "participant_frequency" : {
+        "type" : "float"
       },
       "reference" : {
         "type" : "keyword",
@@ -510,6 +515,10 @@
           },
           "participant_number" : {
             "type" : "long"
+          },
+          "participant_ids" : {
+            "type" : "keyword",
+            "index" : false
           },
           "study_id" : {
             "type" : "keyword"
