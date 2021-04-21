@@ -8,9 +8,14 @@ import scala.util.Try
 
 object Indexer extends App {
 
+  println(s"ARGS: " + args.mkString("[", ", ", "]"))
+
+  val Array(input, esNodes, indexName, release, templateFileName, jobType, batchSize, chromosome, format) = args
+
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
-    .config("es.nodes", args(1))
+    .config("es.nodes", esNodes)
+    .config("es.batch.size.entries", batchSize)
     .config("es.nodes.client.only", "false")
     .config("es.nodes.discovery", "false")
     .config("es.nodes.wan.only", "true")
@@ -24,10 +29,6 @@ object Indexer extends App {
     .appName(s"Indexer").getOrCreate()
 
   spark.sparkContext.setLogLevel("ERROR")
-
-  println(s"ARGS: " + args.mkString("[", ", ", "]"))
-
-  val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId, chromosome, format) = args
 
   val ES_config =
     Map(
