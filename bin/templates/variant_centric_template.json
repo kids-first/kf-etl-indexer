@@ -386,6 +386,9 @@
               "inheritance" : {
                 "type" : "keyword"
               },
+              "inheritance_code" : {
+                "type" : "keyword"
+              },
               "name" : {
                 "type" : "keyword"
               },

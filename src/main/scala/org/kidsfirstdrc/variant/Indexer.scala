@@ -30,7 +30,9 @@ object Indexer extends App {
   val Array(input, esNodes, indexName, release, templateFileName, jobType, columnId, chromosome, format) = args
 
   val ES_config =
-    Map("es.mapping.id" -> columnId, "es.write.operation"-> jobType)
+    Map(
+      //"es.mapping.id" -> columnId,
+      "es.write.operation"-> jobType)
 
   val esClient = new ElasticSearchClient(esNodes.split(',').head)
 

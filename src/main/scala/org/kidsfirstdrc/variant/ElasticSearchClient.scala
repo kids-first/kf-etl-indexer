@@ -1,6 +1,6 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.http.client.methods.{HttpDelete, HttpGet, HttpPut}
+import org.apache.http.client.methods.{HttpDelete, HttpGet, HttpPost, HttpPut}
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.util.EntityUtils
@@ -90,7 +90,7 @@ class ElasticSearchClient(url: String) {
         |}
         |""".stripMargin
 
-    val request = new HttpPut(requestUrl)
+    val request = new HttpPost(requestUrl)
     request.addHeader(HttpHeaders.CONTENT_TYPE,"application/json")
     request.setEntity(new StringEntity(body))
     val response = new DefaultHttpClient().execute(request)
