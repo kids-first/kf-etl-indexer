@@ -1,7 +1,6 @@
 package org.kidsfirstdrc
 
 import org.kidsfirstdrc.utils.WithSparkSession
-import org.kidsfirstdrc.variant.ElasticSearchClient
 import org.scalatest.GivenWhenThen
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.must.Matchers

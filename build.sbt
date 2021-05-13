@@ -13,6 +13,7 @@ val scalatest_version = "3.2.0"
 /* Runtime */
 libraryDependencies += "org.apache.spark" %% "spark-sql" % spark_version % Provided
 libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-20" % elasticsearch_spark_version % Provided
+libraryDependencies += "bio.ferlab" %% "datalake-spark2" % "0.0.32"
 
 
 /* Test */
