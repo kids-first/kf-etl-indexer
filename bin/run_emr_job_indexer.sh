@@ -13,6 +13,7 @@ number_instance=${10:-"1"}
 instance_type=${11:-"m5.2xlarge"}
 env=${12:-"dev"}
 format=${13:-"parquet"}
+repartition=${14:-"10000"}
 
 aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
@@ -47,7 +48,8 @@ steps=$(cat <<EOF
       "${es_job_type}",
       "${es_batch_size}",
       "${chromosome}",
-      "${format}"
+      "${format}",
+      "${repartition}"
     ],
     "Type": "CUSTOM_JAR",
     "ActionOnFailure": "TERMINATE_CLUSTER",

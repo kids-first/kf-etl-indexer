@@ -3,17 +3,19 @@ package org.kidsfirstdrc.variant
 import bio.ferlab.datalake.spark2.elasticsearch.{ElasticSearchClient, Indexer}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SparkSession}
+import scala.util.Try
 
 object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, alias, release, templateFileName, jobType, batchSize, chromosome, format) = args
+  val Array(input, esNodes, alias, release, templateFileName, jobType, batchSize, chromosome, format, repartition) = args
 
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
     .config("es.nodes", esNodes)
     .config("es.batch.size.entries", batchSize)
+    .config("es.batch.write.retry.wait", "100s")
     .config("es.nodes.client.only", "false")
     .config("es.nodes.discovery", "false")
     .config("es.nodes.wan.only", "true")
@@ -35,9 +37,18 @@ object Indexer extends App {
 
   val df: DataFrame = chromosome match {
     case "all" =>
-      spark.read
-        .format(format)
-        .load(input)
+      Try(repartition.toInt)
+        .toOption
+        .fold {
+          spark.read
+            .format(format)
+            .load(input)
+        }{n =>
+          spark.read
+            .format(format)
+            .load(input)
+            .repartition(n)
+        }
 
     case s =>
       spark.read
