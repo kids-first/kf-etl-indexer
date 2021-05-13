@@ -1,16 +1,14 @@
 package org.kidsfirstdrc.variant
 
-import org.apache.spark.sql.SparkSession
+import bio.ferlab.datalake.spark2.elasticsearch.{ElasticSearchClient, Indexer}
 import org.apache.spark.sql.functions.col
-import org.elasticsearch.spark.sql._
-
-import scala.util.Try
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, indexName, release, templateFileName, jobType, batchSize, chromosome, format) = args
+  val Array(input, esNodes, alias, release, templateFileName, jobType, batchSize, chromosome, format) = args
 
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
@@ -30,49 +28,23 @@ object Indexer extends App {
 
   spark.sparkContext.setLogLevel("ERROR")
 
-  val ES_config =
-    Map(
-      //"es.mapping.id" -> columnId,
-      "es.write.operation"-> jobType)
+  val templatePath = s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName"
 
-  val esClient = new ElasticSearchClient(esNodes.split(',').head)
+  val job = new Indexer(jobType, templatePath, alias, release)
+  implicit val esClient: ElasticSearchClient = new ElasticSearchClient(esNodes.split(',').head)
 
-  chromosome match {
+  val df: DataFrame = chromosome match {
     case "all" =>
-      val index = s"${indexName}_$release".toLowerCase
-      if (jobType == "index") setupIndex(index)
       spark.read
         .format(format)
         .load(input)
-        .repartition(200)
-        .saveToEs(s"$index/_doc", ES_config)
-
-      Try(esClient.setAlias(index, indexName))
 
     case s =>
-      val index = s"${indexName}_${release}_${s}".toLowerCase
-      if (jobType == "index") setupIndex(index)
       spark.read
         .format(format)
         .load(input)
         .where(col("chromosome") === s)
-        .repartition(200)
-        .saveToEs(s"$index/_doc", ES_config)
-
-      Try(esClient.setAlias(index, indexName))
   }
 
-
-
-  def setupIndex(indexName: String): Unit = {
-    Try {
-      println(s"ElasticSearch 'isRunning' status: [${esClient.isRunning}]")
-      println(s"ElasticSearch 'checkNodes' status: [${esClient.checkNodeRoles}]")
-
-      val respDelete = esClient.deleteIndex(indexName)
-      println(s"DELETE INDEX[$indexName] : " + respDelete.getStatusLine.getStatusCode + " : " + respDelete.getStatusLine.getReasonPhrase)
-    }
-    val response = esClient.setTemplate(s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName")
-    println(s"SET TEMPLATE[${templateFileName}] : " + response.getStatusLine.getStatusCode + " : " + response.getStatusLine.getReasonPhrase)
-  }
+  job.run(df)(esClient)
 }

@@ -2,7 +2,6 @@ package org.kidsfirstdrc.utils
 
 import org.apache.commons.io.FileUtils
 import org.apache.spark.sql.SparkSession
-import org.kidsfirstdrc.variant.ElasticSearchClient
 
 import java.io.File
 import java.nio.file.{Files, Path}
