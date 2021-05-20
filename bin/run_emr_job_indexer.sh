@@ -14,7 +14,7 @@ instance_type=${11:-"m5.2xlarge"}
 env=${12:-"dev"}
 format=${13:-"parquet"}
 repartition=${14:-"10000"}
-
+previous_release_id=${15:-"re_000010"}
 aws s3 cp templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
 
 # default is dev vpc-05be68d35774905e8
@@ -43,6 +43,7 @@ steps=$(cat <<EOF
       "${input}",
       "${es_nodes}",
       "${es_index_name}",
+      "${previous_release_id}",
       "${release_id}",
       "${es_index_template}",
       "${es_job_type}",

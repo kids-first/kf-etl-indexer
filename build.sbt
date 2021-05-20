@@ -18,7 +18,6 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % spark_version % Provi
 libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-20" % elasticsearch_spark_version % Provided
 libraryDependencies += "bio.ferlab" %% "datalake-spark2" % "0.0.41"
 
-
 /* Test */
 libraryDependencies += "org.scalatest" %% "scalatest" % scalatest_version % Test
 libraryDependencies += "org.apache.spark" %% "spark-hive" % spark_version % Test

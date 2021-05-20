@@ -3,13 +3,14 @@ package org.kidsfirstdrc.variant
 import bio.ferlab.datalake.spark2.elasticsearch.{ElasticSearchClient, Indexer}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SparkSession}
+
 import scala.util.Try
 
 object Indexer extends App {
 
   println(s"ARGS: " + args.mkString("[", ", ", "]"))
 
-  val Array(input, esNodes, alias, release, templateFileName, jobType, batchSize, chromosome, format, repartition) = args
+  val Array(input, esNodes, alias, oldRelease, newRelease, templateFileName, jobType, batchSize, chromosome, format, repartition) = args
 
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
@@ -32,7 +33,7 @@ object Indexer extends App {
 
   val templatePath = s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName"
 
-  val job = new Indexer(jobType, templatePath, alias, release)
+  val job = new Indexer(jobType, templatePath, alias, oldRelease, newRelease)
   implicit val esClient: ElasticSearchClient = new ElasticSearchClient(esNodes.split(',').head)
 
   val df: DataFrame = chromosome match {
