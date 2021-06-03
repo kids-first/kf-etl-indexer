@@ -1,4 +1,8 @@
 #!/bin/bash
+tag=$1
+folder=${2:-"qa"}
+bucket=${3:-"s3://kf-strides-variant-parquet-prd"}
+
 set -x
 mkdir -p ~/.ivy2 ~/.sbt ~/.m2 ~/.sbt_cache
 docker run --rm -v $(pwd):/app/build \
@@ -10,6 +14,7 @@ docker run --rm -v $(pwd):/app/build \
     -w /app/build hseeberger/scala-sbt:8u282_1.5.2_2.11.12 \
     sbt -Duser.home=/app clean assembly
 
-aws s3 cp target/scala-2.11/kf-etl-indexer-7.9.1.jar s3://kf-strides-variant-parquet-prd/jobs/kf-etl-indexer-7.9.1.jar
+aws s3 cp target/scala-2.12/kf-etl-indexer-7.9.1.jar ${bucket}/jobs/${folder}/kf-etl-indexer-7.9.1.jar
+aws s3 cp target/scala-2.12/kf-etl-indexer-7.9.1.jar ${bucket}/jobs/${folder}/kf-etl-indexer-7.9.1-${tag}.jar
 
-aws s3 cp bin/templates s3://kf-strides-variant-parquet-prd/jobs/templates --recursive
+aws s3 cp bin/templates ${bucket}/jobs/${folder}/templates --recursive
