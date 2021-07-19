@@ -1,6 +1,6 @@
 package org.kidsfirstdrc.variant
 
-import bio.ferlab.datalake.spark2.elasticsearch.{ElasticSearchClient, Indexer}
+import bio.ferlab.datalake.spark3.elasticsearch.{ElasticSearchClient, Indexer}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -33,7 +33,14 @@ object Indexer extends App {
 
   val templatePath = s"s3://kf-strides-variant-parquet-prd/jobs/templates/$templateFileName"
 
-  val job = new Indexer(jobType, templatePath, alias, oldRelease, newRelease)
+  val indexName = chromosome match {
+    case "all" => alias
+    case c => s"${alias}_${c}"
+  }
+
+  println(s"$jobType - ${indexName}_$newRelease")
+
+  val job = new Indexer(jobType, templatePath, alias, s"${indexName}_$newRelease", Some(s"${indexName}_$oldRelease"))
   implicit val esClient: ElasticSearchClient = new ElasticSearchClient(esNodes.split(',').head)
 
   val df: DataFrame = chromosome match {
