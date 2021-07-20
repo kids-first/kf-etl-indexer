@@ -8,7 +8,7 @@ es_index_template=${5:-"genomic_suggestions_template.json"}
 es_job_type=${6:-"index"} # one of: index, update, upsert or create
 es_batch_size=${7:-"500"} #default is 1000
 chromosome=${8:-"all"} #all, 1, 2, 3, ..., X, Y
-jarV=${9:-"7.9.1"}
+jarV=${9:-"7.12.0"}
 number_instance=${10:-"1"}
 instance_type=${11:-"m5.2xlarge"}
 env=${12:-"dev"}
@@ -37,9 +37,9 @@ steps=$(cat <<EOF
     "Args": [
       "spark-submit",
       "--deploy-mode", "client",
-      "--packages", "org.elasticsearch:elasticsearch-spark-20_2.11:${jarV},commons-httpclient:commons-httpclient:3.1",
+      "--packages", "org.elasticsearch:elasticsearch-spark-30_2.12:${jarV},commons-httpclient:commons-httpclient:3.1",
       "--class", "org.kidsfirstdrc.variant.Indexer",
-      "s3a://kf-strides-variant-parquet-prd/jobs/kf-etl-indexer-${jarV}.jar",
+      "s3a://kf-strides-variant-parquet-prd/jobs/kf-etl-indexer-spark3-${jarV}.jar",
       "${input}",
       "${es_nodes}",
       "${es_index_name}",
@@ -69,7 +69,7 @@ aws emr create-cluster --applications Name=Hadoop Name=Spark \
 --ec2-attributes "${ec2_attributes}" \
 --service-role ${emrServiceRole} \
 --enable-debugging \
---release-label emr-5.32.0 \
+--release-label emr-6.3.0 \
 --log-uri 's3n://kf-strides-variant-parquet-prd/jobs/elasticmapreduce/' \
 --steps "${steps}" \
 --name "${es_index_name}_${chromosome} index to ES7 ${release_id} - ${env}" \

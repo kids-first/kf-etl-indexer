@@ -2,27 +2,27 @@ name := "kf-etl-indexer"
 
 version := "0.1"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.11"
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
 resolvers += "Sonatype OSS Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots"
 resolvers += "Sonatype OSS Releases" at "https://s01.oss.sonatype.org/content/repositories/releases"
 
-val spark_version = "2.4.7"
-val elasticsearch_spark_version = "7.9.1"
+val spark_version = "3.1.1"
+val elasticsearch_spark_version = "7.12.0"
 val scalatest_version = "3.2.0"
 
 /* Runtime */
 libraryDependencies += "org.apache.spark" %% "spark-sql" % spark_version % Provided
-libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-20" % elasticsearch_spark_version % Provided
-libraryDependencies += "bio.ferlab" %% "datalake-spark2" % "0.0.45"
+libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-30" % elasticsearch_spark_version % Provided
+libraryDependencies += "bio.ferlab" %% "datalake-spark3" % "0.0.50"
 
 /* Test */
 libraryDependencies += "org.scalatest" %% "scalatest" % scalatest_version % Test
 libraryDependencies += "org.apache.spark" %% "spark-hive" % spark_version % Test
 
-test in assembly := {}
+assembly / test := {}
 
 assemblyMergeStrategy in assembly := {
   case "META-INF/io.netty.versions.properties" => MergeStrategy.last
@@ -36,4 +36,4 @@ assemblyMergeStrategy in assembly := {
     val oldStrategy = (assemblyMergeStrategy in assembly).value
     oldStrategy(x)
 }
-assemblyJarName in assembly := s"kf-etl-indexer-$elasticsearch_spark_version.jar"
+assembly / assemblyJarName := s"kf-etl-indexer-spark3-$elasticsearch_spark_version.jar"
